@@ -39,6 +39,7 @@
                 $ObraEtapaBusiness = new ObraEtapaBusiness();
                 $allObrasEtapaMateriales = $ObraEtapaMaterialesBusiness->getAllObraEtapaMateriales();
                 foreach ($allObrasEtapaMateriales as $current) {
+
                     echo '<form method="post" enctype="multipart/form-data" action="../business/ObraEtapaMaterialesAction.php">';
                     echo '<td><input type="hidden" readonly name="etapamaterialid" id="etapamaterialid" value="' . $current->getObraEtapaMaterialesId(). '"/></td>';
                     echo '<td><input  type="text" readonly name="nombreetapa" id="nombreetapa" value="' . $ObraEtapaBusiness->getNombreEtapa($current->getEtapaId()) .  '"/></td>';
@@ -46,7 +47,7 @@
                     echo '<td><input required type="text" data-mask  ="00000" name="cantidadmaterial" id="cantidadmaterial" value="' . $current->getEtapaCantidad() . '"/></td>';
                     echo '<td><input required type="text" data-mask  ="₡ #.##0,00" name="montoaproximado" id="montoaproximado" value="₡ ' . $current->getEtapaCostoAproximado() . '"/></td>';
                     
-                    echo '<td><input type="submit" value="Actualizar" name="actualiza" id="actualiza"/></td>';
+                    echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
                     echo '<td><button onclick="eliminarEtapaMaterial(' . $current->getObraEtapaMaterialesId() . ')">Eliminar</button></td>';
                     echo '</tr>';
                     echo '</form>';

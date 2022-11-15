@@ -4,38 +4,38 @@ include './ObraEtapaMaterialesBusiness.php';
 
 if (isset($_POST['actualizar'])) {
     if (
-        isset($_POST['tbobraetapaid']) && isset($_POST['tbobraid']) && isset($_POST['tbobraetapanombre']) && isset($_POST['tbobraetapadescricion'])
-        && isset($_POST['tbobraetapaduracionaproximada'])
+        isset($_POST['etapamaterialid']) && isset($_POST['nombreetapa']) && isset($_POST['nombrematerial']) && isset($_POST['cantidadmaterial'])
+        && isset($_POST['montoaproximado'])
     ) {
-        $tbObraEtapaId = $_POST['tbobraetapaid'];
-        $tbObraId =  $_POST['tbobraid'];
-        $tbObraEtapaNombre = $_POST['tbobraetapanombre'];
-        $tbObraEtapaDescripcion = $_POST['tbobraetapadescricion'];
-        $tbObraEtapaDuracionAproximada = $_POST['tbobraetapaduracionaproximada'];
+        $etapaMaterialId = $_POST['etapamaterialid'];
+        $nombreEtapa =  $_POST['nombreetapa'];
+        $nombreMaterial = $_POST['nombrematerial'];
+        $cantidadMaterial = $_POST['cantidadmaterial'];
+        $montoAproximado = $_POST['montoaproximado'];
 
         if (
-            strlen($tbObraEtapaId) > 0 && strlen($tbObraId) > 0 && strlen($tbObraEtapaNombre) > 0 && strlen($tbObraEtapaDescripcion) > 0
-            && strlen($tbObraEtapaDuracionAproximada) > 0
+            strlen($etapaMaterialId) > 0 && strlen($nombreEtapa) > 0 && strlen($nombreMaterial) > 0 && strlen($cantidadMaterial) > 0
+            && strlen($montoAproximado) > 0
         ) {
-            if (!is_numeric($tbObraEtapaNombre)) {
-                $ObraEtapa = new ObraEtapa($tbObraEtapaId, $tbObraId, $tbObraEtapaNombre, $tbObraEtapaDescripcion, $tbObraEtapaDuracionAproximada);
+            if (!is_numeric($nombreMaterial)) {
+                $ObraEtapaMat = new ObraEtapaMaterialesBusiness($etapaMaterialId, $nombreEtapa, $nombreMaterial, $cantidadMaterial, $montoAproximado);
 
-                $ObraEtapaBusiness = new ObraEtapaBusiness();
+                $ObraEtapaMaterialesBusiness = new ObraEtapaMaterialesBusiness();
 
-                $result = $ObraEtapaBusiness->updateObraEtapa($ObraEtapa);
+                $result = $ObraEtapaMaterialesBusiness->updateObraEtapaMateriales($ObraEtapaMat);
                 if ($result == 1) {
-                    header("location: ../view/ObraEtapaView.php?success=updated");
+                    header("location: ../view/ObraEtapaMaterialesView.php?success=updated");
                 } else {
-                    header("location: ../view/ObraEtapaView.php?error=dbError");
+                    header("location: ../view/ObraEtapaMaterialesView.php?error=dbError");
                 }
             } else {
-                header("location: ../view/ObraEtapaView.php?error=stringFormat");
+                header("location: ../view/ObraEtapaMaterialesView.php?error=stringFormat");
             }
         } else {
-            header("location: ../view/ObraEtapaView.php?error=emptyField");
+            header("location: ../view/ObraEtapaMaterialesView.php?error=emptyField");
         }
     } else {
-        header("location: ../view/ObraEtapaView.php?error=error");
+        header("location: ../view/ObraEtapaMaterialesView.php?error=error");
     }
 } else if (strcmp($_POST['action'], 'delete') == 0) { //delete
     if (isset($_POST['etapamaterialid'])) {

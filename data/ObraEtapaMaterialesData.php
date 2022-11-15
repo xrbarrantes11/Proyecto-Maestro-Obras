@@ -28,14 +28,13 @@ class ObraEtapaMaterialesData extends Data {
         return $result;
     }
 
-    public function updateEmpleadoTipo($EmpleadoTipo) {
+    public function updateObraEtapaMateriales($ObraEtapaMat) {
         $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
         $conn->set_charset('utf8');
-        $queryUpdate = "UPDATE tbempleadotipo SET tbempleadotiponombre='" . $EmpleadoTipo->getEmpleadoTipoNombre() .
-                "', tbempleadotipodescripcion='" . $EmpleadoTipo->getEmpleadoTipoDescripcion() .
-                "', tbempleadotipoactivo=" . $EmpleadoTipo->getEmpleadoTipoActivo() .
-                ", tbempleadotiposalariobase=" . $EmpleadoTipo->getEmpleadoTipoSalarioBase() .
-                " WHERE tbempleadotipoid=" . $EmpleadoTipo->getEmpleadoTipoId() . ";";
+        $queryUpdate = "UPDATE tbobraetapamateriales SET tbetapanombremateriales='" . $ObraEtapaMat->getEtapaNombreMateriales() .
+                "', tbetapacantidad=" . $ObraEtapaMat->getEtapaCantidad() .
+                ", tbetapacostoaproximado=" . $ObraEtapaMat->getEtapaCostoAproximado() .
+                " WHERE tbetapamaterialesid=" . $ObraEtapaMat->getObraEtapaMaterialesId() . ";";
 
         $result = mysqli_query($conn, $queryUpdate);
         mysqli_close($conn);
