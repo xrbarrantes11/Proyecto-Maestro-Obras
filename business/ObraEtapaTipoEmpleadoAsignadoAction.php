@@ -5,28 +5,30 @@ include './EmpleadoTipoBusiness.php';
 include './ObraEtapaBusiness.php';
 include './ObraEtapaTipoEmpleadoAsignadoBusiness.php';
 include './EmpleadoTipoEmpleadoPagoBusiness.php';
+include './EmpleadoTipoAsignadoBusiness.php';
 
 if (isset($_POST['crear'])) {
 
     if (isset($_POST['etapanombreid']) && isset($_POST['empleadonombreid']) && isset($_POST['empleadotipoid'])) {
         $EmpleadoTipoEmpleadoPagoBusiness = new EmpleadoTipoEmpleadoPagoBusiness();
+        $ObraEtapaTipoEmpleadoAsignadoBusiness = new ObraEtapaTipoEmpleadoAsignadoBusiness();
+        $EmpleadoTipoAsignadoBusiness = new EmpleadoTipoAsignadoBusiness();
         $etapaNombre = $_POST['etapanombreid'];
         $empleadoNombreId = $_POST['empleadonombreid'];
         $empleadoTipo = $_POST['empleadotipoid'];
 
         if (strlen($etapaNombre) > 0 && strlen($empleadoNombreId) > 0 && strlen($empleadoTipo) > 0) {
-            if (!$EmpleadoTipoEmpleadoPagoBusiness->buscarRegistroRepetido($empleadoTipo, $empleadoNombreId)) {
+            if (!$ObraEtapaTipoEmpleadoAsignadoBusiness->buscarRegistroRepetidoEmpleados($empleadoTipo, $empleadoNombreId)) {
                 $EmpleadoTipo = new ObraEtapaTipoEmpleadoAsignado(0, $etapaNombre, $empleadoNombreId, $empleadoTipo);
-                $ObraEtapaTipoEmpleadoAsignadoBusiness = new ObraEtapaTipoEmpleadoAsignadoBusiness();
-
-                if ($EmpleadoTipoEmpleadoPagoBusiness->buscarEmpleadoTipoEmpleadoPagoRepetido($empleadoNombreId, $empleadoTipo) == false) {
+                $result = 0;
+                if ($ObraEtapaTipoEmpleadoAsignadoBusiness->buscarEmpleadoTipoEmpleadoObraRepetido($empleadoNombreId, $empleadoTipo) == false) {
                     if ($EmpleadoTipoAsignadoBusiness->buscarTipoAsignado($empleadoNombreId, $empleadoTipo) == true) {
                         $result = $ObraEtapaTipoEmpleadoAsignadoBusiness->insertObraTipoEmpleadoAsignado($etapaNombre, $empleadoNombreId, $empleadoTipo);
                     }
                 }
                 if ($result == 1) {
                     header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?success=inserted");
-                } else if ($EmpleadoTipoEmpleadoPagoBusiness->buscarEmpleadoTipoEmpleadoPagoRepetido($empleadoNombreId, $empleadoTipoId) == true) {
+                } else if ($ObraEtapaTipoEmpleadoAsignadoBusiness->buscarEmpleadoTipoEmpleadoObraRepetido($empleadoNombreId, $empleadoTipoId) == true) {
                     header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?error=repite");
                 } else if($EmpleadoTipoAsignadoBusiness->buscarTipoAsignado($empleadoNombreId, $empleadoTipoId) == false){
                     header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?error=empty");
@@ -34,7 +36,7 @@ if (isset($_POST['crear'])) {
                     header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?error=dbError");
                 }
             } else {
-                header("location: ../view/EmpleadoTipoEmpleadoPagoView.php?error=repite");
+                header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?error=repite");
             }
         } else {
             header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?error=emptyField");

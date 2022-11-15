@@ -53,4 +53,36 @@ class ObraEtapaTipoEmpleadoAsignadoData extends Data {
         return $result;
     }
 
+    public function buscarRegistroRepetidoEmpleados($empleadoTipoId, $empleadoNombreId){
+        $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
+        $conn->set_charset('utf8');
+
+        $querySelect = "SELECT * FROM tbobraetapaempleadotipoasignado;";
+        $result = mysqli_query($conn, $querySelect);
+        mysqli_close($conn);
+        $result = false;
+        while ($row = $result) {
+            if($row['tbempleadoid'] == $empleadoNombreId && $row['tbempleadotipoid'] == $empleadoTipoId){
+                $result = true;
+            }
+        }
+        return $result;
+    }
+
+    public function buscarEmpleadoTipoEmpleadoObraRepetido($empleadoNombreId, $empleadoTipoId) {
+        $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
+        $conn->set_charset('utf8');
+
+        $querySelect = "SELECT * FROM tbobraetapaempleadotipoasignado;";
+        $result = mysqli_query($conn, $querySelect);
+        mysqli_close($conn);
+        $busqueda = false;
+        while ($row = mysqli_fetch_array($result)) {
+            if($row['tbempleadoid'] == $empleadoNombreId && $row['tbempleadotipoid'] == $empleadoTipoId){
+                $busqueda = true;
+            }
+        }
+        return $busqueda;
+    }
+
 }

@@ -22,4 +22,12 @@ class ObraEtapaTipoEmpleadoAsignadoBusiness {
         return $this->ObraEtapaTipoEmpleadoAsignadoData->deleteObraTipoEmpleadoAsignado($ObraEtapaTipoEmpleadoId);
     }
 
+    public function buscarRegistroRepetidoEmpleados($empleadoTipoId, $empleadoNombreId){
+        return $this->ObraEtapaTipoEmpleadoAsignadoData->buscarRegistroRepetidoEmpleados($empleadoTipoId, $empleadoNombreId);
+    }
+
+    public function buscarEmpleadoTipoEmpleadoObraRepetido($empleadoNombreId, $empleadoTipoId) {
+        return $this->ObraEtapaTipoEmpleadoAsignadoData->buscarEmpleadoTipoEmpleadoObraRepetido($empleadoNombreId, $empleadoTipoId);
+    }
+
 }
