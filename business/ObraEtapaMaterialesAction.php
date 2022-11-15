@@ -4,7 +4,7 @@ include './ObraEtapaMaterialesBusiness.php';
 
 if (isset($_POST['actualizar'])) {
     if (
-        isset($_POST['etapamaterialid']) && isset($_POST['nombreetapa']) && isset($_POST['nombrematerial']) && isset($_POST['cantidadmaterial'])
+        isset($_POST['nombreetapa']) && isset($_POST['nombrematerial']) && isset($_POST['cantidadmaterial'])
         && isset($_POST['montoaproximado'])
     ) {
         $etapaMaterialId = $_POST['etapamaterialid'];
@@ -13,10 +13,10 @@ if (isset($_POST['actualizar'])) {
         $cantidadMaterial = $_POST['cantidadmaterial'];
 
         $auxiliar = str_replace('₡', '', $_POST['montoaproximado']);
-        $montoAproximado = str_replace('.', '',$aux);
+        $montoAproximado = str_replace('.', '',$auxiliar);
 
         if (
-            strlen($nombreEtapaMat) > 0 && strlen($nombreMaterial) > 0 && strlen($cantidadMaterial) > 0
+            strlen($nombreMaterial) > 0 && strlen($cantidadMaterial) > 0
             && strlen($montoAproximado) > 0
         ) {
             if (!is_numeric($nombreMaterial)) {
