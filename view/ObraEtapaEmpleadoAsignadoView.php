@@ -31,7 +31,7 @@
                 <th>Nombre de Empleado</th>
                 <th>Tipo de Empleado</th>
             </tr>
-            <tbody id=buscar>
+            <tbody>
                 <?php
                 $ObraEtapaBusiness = new ObraEtapaBusiness();
                 $EmpleadoTipoBusiness = new EmpleadoTipoBusiness();
@@ -44,7 +44,7 @@
                     echo '<td><input type="text" readonly name="etapanombreid" id="etapanombreid" value="' . $ObraEtapaBusiness->getNombreEtapa($current->getObraEtapaId()) . '"/></td>';
                     echo '<td><input type="text" readonly name="empleadonombreid" id="empleadonombreid" value="' . $EmpleadoBusiness->getNombreEmpleado($current->getEmpleadoId()) . '"/></td>';
                     echo '<td><input type="text" readonly name="empleadotipoid" id="empleadotipoid" value="' . $EmpleadoTipoBusiness->getEmpleadoTipo($current->getEmpleadoTipoId()) . '"/></td>';
-                    echo '<td><button onclick="eliminarObraEtapaTipoEmpleadoAsignado(' . $current->getEmpleadoId() . ')">Eliminar</button></td>';
+                    echo '<td><button onclick="eliminarObraEtapaTipoEmpleadoAsignado(' . $current->getObraEtapaTipoEmpleadoId() . ')">Eliminar</button></td>';
                     echo '</tr>';
                     echo '</form>';
                 }

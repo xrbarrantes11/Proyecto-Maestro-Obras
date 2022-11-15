@@ -4,7 +4,7 @@ include '../domain/ObraEtapaTipoEmpleadoAsignado.php';
 
 class ObraEtapaTipoEmpleadoAsignadoData extends Data {
 
-    public function insertObraTipoEmpleadoAsignado($tbobraetapaid, $empleadoTipoId, $empleadoId) {
+    public function insertObraTipoEmpleadoAsignado($tbobraetapaid, $empleadoId, $empleadoTipoId) {
         $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
         $conn->set_charset('utf8');
 
@@ -40,6 +40,17 @@ class ObraEtapaTipoEmpleadoAsignadoData extends Data {
             array_push($ObraTipoEmpleado, $currentObraTipoEmpleado);
         }
         return $ObraTipoEmpleado;
+    }
+
+    public function deleteObraTipoEmpleadoAsignado($ObraEtapaTipoEmpleadoId) {
+        $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
+        $conn->set_charset('utf8');
+
+        $queryUpdate = "DELETE from tbobraetapaempleadotipoasignado where tbobraetapaempleadotipoasignadoid =" . $ObraEtapaTipoEmpleadoId . ";";
+        $result = mysqli_query($conn, $queryUpdate);
+        mysqli_close($conn);
+
+        return $result;
     }
 
 }
