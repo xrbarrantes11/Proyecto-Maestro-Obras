@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <script src="../js/FunctionProyecto.js"></script>
+    <script src="../js/FunctionProyectos.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Etapa de materiales</title>
     <script src="https://jsuites.net/v4/jsuites.js"></script>   
@@ -41,13 +41,13 @@
                 foreach ($allObrasEtapaMateriales as $current) {
                     echo '<form method="post" enctype="multipart/form-data" action="../business/ObraEtapaMaterialesAction.php">';
                     echo '<td><input type="hidden" readonly name="etapamaterialid" id="etapamaterialid" value="' . $current->getObraEtapaMaterialesId(). '"/></td>';
-                    echo '<td><input type="text" readonly name="nombreetapa" id="nombreetapa" value="' . $ObraEtapaBusiness->getNombreEtapa($current->getEtapaId()) .  '"/></td>';
-                    echo '<td><input type="text" name="nombrematerial" id="nombrematerial" value="' . $current->getEtapaNombreMateriales() . '"/></td>';
-                    echo '<td><input type="text" data-mask  ="00000" name="cantidadmaterial" id="cantidadmaterial" value="' . $current->getEtapaCantidad() . '"/></td>';
-                    echo '<td><input type="text" data-mask  ="₡ #.##0,00" name="montoaproximado" id="montoaproximado" value="₡ ' . $current->getEtapaCostoAproximado() . '"/></td>';
+                    echo '<td><input  type="text" readonly name="nombreetapa" id="nombreetapa" value="' . $ObraEtapaBusiness->getNombreEtapa($current->getEtapaId()) .  '"/></td>';
+                    echo '<td><input required type="text" name="nombrematerial" id="nombrematerial" value="' . $current->getEtapaNombreMateriales() . '"/></td>';
+                    echo '<td><input required type="text" data-mask  ="00000" name="cantidadmaterial" id="cantidadmaterial" value="' . $current->getEtapaCantidad() . '"/></td>';
+                    echo '<td><input required type="text" data-mask  ="₡ #.##0,00" name="montoaproximado" id="montoaproximado" value="₡ ' . $current->getEtapaCostoAproximado() . '"/></td>';
                     
                     echo '<td><input type="submit" value="Actualizar" name="actualiza" id="actualiza"/></td>';
-                    echo '<td><button onclick="eliminarPagoEmpleado(' . $current->getObraEtapaMaterialesId() . ',' . $current->getObraEtapaMaterialesId() . ')">Eliminar</button></td>';
+                    echo '<td><button onclick="eliminarEtapaMaterial(' . $current->getObraEtapaMaterialesId() . ')">Eliminar</button></td>';
                     echo '</tr>';
                     echo '</form>';
                 }
@@ -112,7 +112,7 @@
                         </td>
 
                         <td><input required type="text" data-mask  ="0000" max="9999" name="cantidadmaterial" id="cantidadmaterial" value=""/></td>
-                        <td><input required type="text" data-mask  ="₡ #.##0,00" name="costo" id="costo" value="₡"/></td>
+                        <td><input required type="text" data-mask  ="₡#.##0,00" name="costo" id="costo" value="₡ "/></td>
                         
                         <td><input type="submit" value="Insertar" name="crear" id="crear" /></td>
                     </tr>
@@ -130,7 +130,7 @@
                         } else if ($_GET['error'] == "valor") {
                             echo '<p style="color: red">Error, El monto debe estar dentro del rango de salario del tipo de empleado seleccionado.</p>';
                         } else if ($_GET['error'] == "dbError") {
-                            echo '<p style="color: red">Error al procesar la transacción</p></center>';
+                            echo '<p style="color: red">Error, espacios vacios</p></center>';
                         } else if ($_GET['error'] == "repite") {
                             echo '<p style="color: red">Ya existe un registro con los datos ingresados!</p></center>';
                         } else if ($_GET['error'] == "empty") {

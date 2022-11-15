@@ -18,8 +18,8 @@ class ObraEtapaMaterialesBusiness {
         return $this->ObraEtapaMaterialesData->updateObraEtapa($ObraEtapa);
     }
 
-    public function deleteObraEtapa($obraEtapaId)  {
-        return $this->ObraEtapaMaterialesData->deleteObraEtapa($obraEtapaId) ;
+    public function deleteObraEtapa($obraEtapaMaterialesId)  {
+        return $this->ObraEtapaMaterialesData->deleteObraEtapa($obraEtapaMaterialesId) ;
     }
 
     public function getNombreEtapa($idEtapa)  {

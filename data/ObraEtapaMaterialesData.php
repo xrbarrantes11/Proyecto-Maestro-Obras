@@ -42,11 +42,11 @@ class ObraEtapaMaterialesData extends Data {
         return $result;
     }
 
-    public function deleteEmpleadoTipo($empleadoTipoId) {
+    public function deleteObraEtapa($obraEtapaMaterialesId) {
         $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
         $conn->set_charset('utf8');
 
-        $queryUpdate = "DELETE from tbempleadotipo where tbempleadotipoid=" . $empleadoTipoId . ";";
+        $queryUpdate = "DELETE from tbobraetapamateriales where tbetapamaterialesid=" . $obraEtapaMaterialesId . ";";
         $result = mysqli_query($conn, $queryUpdate);
         mysqli_close($conn);
 

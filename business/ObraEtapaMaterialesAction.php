@@ -37,14 +37,14 @@ if (isset($_POST['actualizar'])) {
     } else {
         header("location: ../view/ObraEtapaView.php?error=error");
     }
-} /*else if (strcmp($_POST['action'], 'delete') == 0) { //delete
-    if (isset($_POST['obraEtapaId'])) {
+} else if (strcmp($_POST['action'], 'delete') == 0) { //delete
+    if (isset($_POST['etapamaterialid'])) {
 
-        $obraEtapaId = $_POST['obraEtapaId'];
+        $obraEtapaMaterialesId = $_POST['etapamaterialid'];
 
-        $ObraEtapaBusiness = new ObraEtapaBusiness();
+        $ObraEtapa = new ObraEtapaMaterialesBusiness();
 
-        $result = $ObraEtapaBusiness->deleteObraEtapa($obraEtapaId);
+        $result = $ObraEtapa->deleteObraEtapa($obraEtapaMaterialesId);
 
         if ($result == 1) {
             echo "Transaccion realizada y borrada";
@@ -54,8 +54,7 @@ if (isset($_POST['actualizar'])) {
     } else {
         echo "Error de informacion";
     }
-} */
-
+} 
 
 else if (isset($_POST['crear'])) {
 

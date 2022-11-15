@@ -29,7 +29,7 @@
                     
                     $formulario .= '<input type="hidden" name="id" value="'.$id.'">';
                     $formulario .= '<label>Nombre:</label> <input type="text" name="empleadonombre" value="'. $nombre.'">';
-				 	$formulario .= '<label>Fecha:</label> <input type="date" id="fechaactual" name="fechaactual" value="'. $fechaActual.'">';
+				 	$formulario .= '<label>Fecha:</label> <input type="date" max="'. $fechaActual.'" id="fechaactual" name="fechaactual" value="'. $fechaActual.'">';
 				 	$formulario .= '<label>Hora Inicio:</label> <input type="time" class="horainicio" name="horainicio">';
 				 	$formulario .= '<label>Hora Final:</label> <input  readonly  type="time" class="horafinal" name="horafinal" >';
 				 	$formulario .= '<input type="submit"  name="insertarHoras" class="input-form" onclick="validarFechas(1)" value="Insertar horas">';
@@ -41,7 +41,7 @@
 			        $hora = $empleadoBusiness ->obtenerHoraEmpleado($id,$fechaActual);
 			        $formulario .= '<form method="POST" action="../business/EmpleadoCostoHoraAction.php">';
 				 	$formulario .=	'<input type="hidden" name="id" value="'.$hora->getEmpleadoId().'">';
-				 	$formulario .= '<label>Fecha:</label><input type="date" name="fechaactual" value="'.$fechaActual.'">';
+				 	$formulario .= '<label>Fecha:</label><input type="date" max="'. $fechaActual.'" name="fechaactual" value="'.$fechaActual.'">';
 				 	$formulario .= '<label>Hora Inicio:</label><input readonly type="time" name="horainicio" class="horainicio" value="'.$hora->getEmpleadoHoraInicio().'">';
 				 	$formulario .= '<label>Hora Final:</label><input type="time" name="horafinal" class ="horafinal" value="'.$hora->getEmpleadoHoraFin().'">';
 					 $formulario .= '<input type="submit" name="actualizarHoras" class="input-form" value="Insertar horas" onclick="validarFechas(2)">';
@@ -53,7 +53,7 @@
                     
                     $formulario .= '<input type="hidden" name="id" value="'.$id.'">';
                     $formulario .= '<label>Nombre:</label> <input type="text" name="empleadonombre" value="'. $nombre.'">';
-				 	$formulario .= '<label>Fecha:</label> <input type="date" id="fechaactual" name="fechaactual" value="'. $fechaActual.'">';
+				 	$formulario .= '<label>Fecha:</label> <input type="date" max="'. $fechaActual.'" id="fechaactual" name="fechaactual" value="'. $fechaActual.'">';
 				 	$formulario .= '<label>Hora Inicio:</label> <input readonly type="time" class="horainicio" name="horainicio">';
 				 	$formulario .= '<label>Hora Final:</label> <input  readonly  type="time" class="horafinal" name="horafinal" >';
 				 	$formulario .= '<input type="submit"  name="insertarHoras" class="input-form" onclick="validarFechas(1)" value="Insertar horas">';
