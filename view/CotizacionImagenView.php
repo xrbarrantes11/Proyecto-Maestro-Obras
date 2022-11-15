@@ -80,6 +80,7 @@
                             <?php } ?>
                         </select></td>
                 <td><input type="file" required name="cotizacionimagen" id="cotizacionimagen"></td>
+                <td><input type="text"></td>
                 <?php
                 $cotizacionimagenactivo = 1;
                     if ($cotizacionimagenactivo == 1) {
