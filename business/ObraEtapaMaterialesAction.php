@@ -8,19 +8,19 @@ if (isset($_POST['actualizar'])) {
         && isset($_POST['montoaproximado'])
     ) {
         $etapaMaterialId = $_POST['etapamaterialid'];
-        $nombreEtapa =  $_POST['nombreetapa'];
+        $nombreEtapaMat =  $_POST['nombreetapa'];
         $nombreMaterial = $_POST['nombrematerial'];
         $cantidadMaterial = $_POST['cantidadmaterial'];
 
-        $aux = str_replace('₡', '', $_POST['montoaproximado']);
+        $auxiliar = str_replace('₡', '', $_POST['montoaproximado']);
         $montoAproximado = str_replace('.', '',$aux);
 
         if (
-            strlen($nombreEtapa) > 0 && strlen($nombreMaterial) > 0 && strlen($cantidadMaterial) > 0
+            strlen($nombreEtapaMat) > 0 && strlen($nombreMaterial) > 0 && strlen($cantidadMaterial) > 0
             && strlen($montoAproximado) > 0
         ) {
             if (!is_numeric($nombreMaterial)) {
-                $ObraEtapaMat = new ObraEtapaMaterialesBusiness($etapaMaterialId, $nombreEtapa, $nombreMaterial, $cantidadMaterial, $montoAproximado);
+                $ObraEtapaMat = new ObraEtapaMaterialesBusiness($etapaMaterialId, $nombreEtapaMat, $nombreMaterial, $cantidadMaterial, $montoAproximado);
 
                 $ObraEtapaMaterialesBusiness = new ObraEtapaMaterialesBusiness();
 
