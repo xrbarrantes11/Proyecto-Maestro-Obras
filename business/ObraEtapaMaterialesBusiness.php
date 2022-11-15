@@ -14,8 +14,8 @@ class ObraEtapaMaterialesBusiness {
         return $this->ObraEtapaMaterialesData->insertObraEtapa($ObraEtapa);
     }
 
-    public function updateObraEtapaMateriales($ObraEtapaMat) {
-        return $this->ObraEtapaMaterialesData->updateObraEtapaMateriales($ObraEtapaMat);
+    public function updateObraEtapaMateriales($ObraEtapa) {
+        return $this->ObraEtapaMaterialesData->updateObraEtapaMateriales($ObraEtapa);
     }
 
     public function deleteObraEtapa($obraEtapaMaterialesId)  {

@@ -11,10 +11,12 @@ if (isset($_POST['actualizar'])) {
         $nombreEtapa =  $_POST['nombreetapa'];
         $nombreMaterial = $_POST['nombrematerial'];
         $cantidadMaterial = $_POST['cantidadmaterial'];
-        $montoAproximado = $_POST['montoaproximado'];
+
+        $aux = str_replace('₡', '', $_POST['montoaproximado']);
+        $montoAproximado = str_replace('.', '',$aux);
 
         if (
-            strlen($etapaMaterialId) > 0 && strlen($nombreEtapa) > 0 && strlen($nombreMaterial) > 0 && strlen($cantidadMaterial) > 0
+            strlen($nombreEtapa) > 0 && strlen($nombreMaterial) > 0 && strlen($cantidadMaterial) > 0
             && strlen($montoAproximado) > 0
         ) {
             if (!is_numeric($nombreMaterial)) {
