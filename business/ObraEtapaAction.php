@@ -84,17 +84,17 @@ if (isset($_POST['actualizar'])) {
                 if ($result == 1) {
                     header("location: ../view/ObraEtapaView.php?success=inserted");
                 } else {
-                    header("location: ../view/ObraEtapaView.php?error=dbError&var1=$tbObraId&var2=$tbObraEtapaNombre&var3$tbObraEtapaDescripcion&var4$tbObraEtapaDuracionAproximada");
+                    header("location: ../view/ObraEtapaView.php?error=dbError&var1=$tbObraId&var2=$tbObraEtapaNombre&var3=$tbObraEtapaDescripcion&var4=$tbObraEtapaDuracionAproximada");
                 }
             } else {
                 if ((is_numeric($tbObraEtapaNombre) || !ctype_alpha($tbObraEtapaNombre))) {
-                    header("location: ../view/ObraEtapaView.php?error=stringFormat&var1$tbObraId&var3$tbObraEtapaDescripcion&var4$tbObraEtapaDuracionAproximada");
+                    header("location: ../view/ObraEtapaView.php?error=stringFormat&var3=$tbObraEtapaDescripcion&var4=$tbObraEtapaDuracionAproximada");
                 }
             }
         } else {
-            header("location: ../view/ObraEtapaView.php?error=emptyField&var1=$tbObraId&var2=$tbObraEtapaNombre&var3$tbObraEtapaDescripcion&var4$tbObraEtapaDuracionAproximada");
+            header("location: ../view/ObraEtapaView.php?error=emptyField&var1=$tbObraId&var2=$tbObraEtapaNombre&var3=$tbObraEtapaDescripcion&var4=$tbObraEtapaDuracionAproximada");
         }
     } else {
-        header("location: ../view/ObraEtapaView.php?error=error&var1=$tbObraId&var2=$tbObraEtapaNombre&var3$tbObraEtapaDescripcion&var4$tbObraEtapaDuracionAproximada");
+        header("location: ../view/ObraEtapaView.php?error=error&var1=$tbObraId&var2=$tbObraEtapaNombre&var3=$tbObraEtapaDescripcion&var4=$tbObraEtapaDuracionAproximada");
     }
 }

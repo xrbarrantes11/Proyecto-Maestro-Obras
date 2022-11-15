@@ -72,7 +72,8 @@
                 $nombreMaterial = "";
                 $cantidadMaterial = "";
                 $costoAproximado = "";
-                if (isset($_GET['var'])) {
+
+                if (isset($_GET['var1'])) {
                     $etapaMaterialId = $_GET['var1'];
                 }
                 if (isset($_GET['var2'])) {
@@ -107,13 +108,11 @@
                                 <?php } ?>
                             </select>
                         </td>
-                        <td>
-                        <input required type="text" style="WIDTH: 300px; HEIGHT: 85px" name="materiales" id="materiales" value=""/>
-                        </td>
-
-                        <td><input required type="text" data-mask  ="0000" max="9999" name="cantidadmaterial" id="cantidadmaterial" value=""/></td>
-                        <td><input required type="text" data-mask  ="₡#.##0,00" name="costo" id="costo" value="₡ "/></td>
-                        
+                        <?php
+                        echo '<td> <input required type="text" style="WIDTH: 300px; HEIGHT: 85px" name="materiales" id="materiales" value="' . $nombreMaterial . '"/></td>';
+                        echo '<td><input required type="text" data-mask  ="0000" max="9999" name="cantidadmaterial" id="cantidadmaterial" value="' . $cantidadMaterial . '"/></td>';
+                        echo '<td><input required type="text" data-mask  ="₡#.##0,00" name="costo" id="costo" value="₡ '.$costoAproximado.'"/></td>';
+                        ?>
                         <td><input type="submit" value="Insertar" name="crear" id="crear" /></td>
                     </tr>
                 </form>
