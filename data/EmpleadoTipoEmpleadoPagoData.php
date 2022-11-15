@@ -97,7 +97,7 @@ class EmpleadoTipoEmpleadoPagoData extends Data {
         $result = mysqli_query($conn, $querySelect);
         mysqli_close($conn);
         $result = false;
-        while ($row = mysqli_fetch_array($result)) {
+        while ($row = $result) {
             if($row['tbempleadoid'] == $empleadoNombreId && $row['tbtipoempleadoid'] == $empleadoTipoId){
                 $result = true;
             }

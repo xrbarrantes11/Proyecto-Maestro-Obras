@@ -105,6 +105,20 @@ class ObrasData extends Data {
         return $nombreObra;
     }
 
+    public function getNombreObras($idObras) {
+        $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
+        $conn->set_charset('utf8');
+
+        $querySelect = "SELECT tbobranombre FROM tbobra WHERE tbobraid = '". $idObras ."';";
+        $result = mysqli_query($conn, $querySelect);
+        mysqli_close($conn);
+        $nombreObras = "";
+        while ($row = mysqli_fetch_array($result)) {
+            $nombreObras = $row['tbobranombre'];
+        }
+        return $nombreObras;
+    }
+
 }
 
 /*if(isset($_POST["buscar"])){

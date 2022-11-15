@@ -29,5 +29,9 @@ class ObrasBusiness {
     public function getObra($obraId){
         return $this->ObrasData->getObra($obraId);
     }
+
+    public function getNombreObras($idObras) {
+        return $this->ObrasData->getNombreObras($idObras);
+    }
  
 }

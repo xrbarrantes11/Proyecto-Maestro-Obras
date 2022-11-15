@@ -32,9 +32,9 @@ class ObraEtapaMaterialesData extends Data {
         $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
         $conn->set_charset('utf8');
         $queryUpdate = "UPDATE tbobraetapamateriales SET tbetapanombremateriales='" . $ObraEtapaMat->getEtapaNombreMateriales() .
-                "', tbetapacantidad=" . $ObraEtapaMat->getEtapaCantidad() .
-                ", tbetapacostoaproximado=" . $ObraEtapaMat->getEtapaCostoAproximado() .
-                " WHERE tbetapamaterialesid=" . $ObraEtapaMat->getObraEtapaMaterialesId() . ";";
+                "', tbetapacantidad='" . $ObraEtapaMat->getEtapaCantidad() .
+                "', tbetapacostoaproximado='" . $ObraEtapaMat->getEtapaCostoAproximado() .
+                "' WHERE tbetapamaterialesid='" . $ObraEtapaMat->getObraEtapaMaterialesId() . "';";
 
         $result = mysqli_query($conn, $queryUpdate);
         mysqli_close($conn);

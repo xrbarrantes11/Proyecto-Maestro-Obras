@@ -13,6 +13,7 @@
     include '../business/EmpleadoTipoBusiness.php';
     include '../business/ObraEtapaBusiness.php';
     include '../business/ObraEtapaTipoEmpleadoAsignadoBusiness.php';
+    include '../business/ObrasBusiness.php';
     ?>
 
 </head>
@@ -64,9 +65,10 @@
                                 <option value="">Seleccionar la etapa</option>
                                 <?php
                                 $ObraEtapaBusiness = new ObraEtapaBusiness();
+                                $ObrasBusiness = new ObrasBusiness();
                                 $obraEtapa = $ObraEtapaBusiness->getAllObraEtapa();
                                 foreach ($obraEtapa as $tipo) { ?>
-                                    <option value="<?php echo $tipo->getObraId() ?>"><?php echo $tipo->getObraEtapaNombre() ?></option>
+                                    <option value="<?php echo $tipo->getObraId() ?>"><?php echo $ObrasBusiness->getNombreObras($tipo->getObraId()) ?> - <?php echo $tipo->getObraEtapaNombre() ?></option>
                                 <?php } ?>
                             </select></td>
                         <td><select name="empleadonombreid" id="" required>
@@ -108,6 +110,8 @@
                             echo '<p style="color: red">Ya existe un registro con los datos ingresados!</p></center>';
                         } else if ($_GET['error'] == "empty") {
                             echo '<p style="color: red">El empleado seleccionado no se encuentra registrado con el tipo seleccionado!</p></center>';
+                        }else if ($_GET['error'] == "repite") {
+                            echo '<p style="color: red">Ya existe un registro con los datos ingresados!</p></center>';
                         }
                     } else if (isset($_GET['success'])) {
                         echo '<p style="color: green">Transacción realizada</p>';
