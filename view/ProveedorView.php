@@ -56,7 +56,7 @@ error_reporting(0);
         <table>
             <tr>
                 <th>Nombre</th>
-                <th>Apellido</th>
+                <th>Apellidos</th>
                 <th>Comercio</th>
                 <th>Cedula</th>
                 <th>Telefono</th>
@@ -101,7 +101,7 @@ error_reporting(0);
             <tr>
                 <th></th>
                 <th>Nombre</th>
-                <th>Apellido</th>
+                <th>Apellidos</th>
                 <th>Comercio</th>
                 <th>Cedula</th>
                 <th>Telefono</th>

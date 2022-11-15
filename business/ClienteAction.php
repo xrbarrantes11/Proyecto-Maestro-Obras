@@ -9,8 +9,8 @@ if (isset($_POST['actualizar'])) {
     ) {
         $tbClienteId = $_POST['tbclienteid'];
         $tbClienteCedula = str_replace('-', '', $_POST['tbclientecedula']);
-        $tbClienteNombre = $_POST['tbclientenombre'];
-        $tbClienteApellidos = $_POST['tbclienteapellidos'];
+        $tbClienteNombre = str_replace(' ', 'OOO',$_POST['tbclientenombre']);
+        $tbClienteApellidos = str_replace(' ', 'OOO', $_POST['tbclienteapellidos']);
         $tbClienteTelefono = str_replace('-', '', $_POST['tbclientetelefono']);
         $tbClienteCorreo = $_POST['tbclientecorreo'];
 
@@ -20,6 +20,8 @@ if (isset($_POST['actualizar'])) {
         ) {
             if (!is_numeric($tbClienteNombre) && !is_numeric($tbClienteApellidos) && ctype_alpha($tbClienteNombre) && ctype_alpha($tbClienteApellidos)) {
                 if (filter_var($tbClienteCorreo, FILTER_VALIDATE_EMAIL)) {
+                    $tbClienteNombre = str_replace('OOO', ' ',$_POST['tbclientenombre']);
+                    $tbClienteApellidos = str_replace('OOO', ' ', $tbClienteApellidos);
                     $Cliente = new Cliente($tbClienteId, $tbClienteCedula, $tbClienteNombre, $tbClienteApellidos, $tbClienteTelefono, $tbClienteCorreo);
                     $ClienteBusiness = new ClienteBusiness();
                     $resultado = $ClienteBusiness->updateCliente($Cliente);
@@ -64,8 +66,8 @@ if (isset($_POST['actualizar'])) {
         && isset($_POST['tbclientetelefono']) && isset($_POST['tbclientecorreo'])
     ) {
         $tbClienteCedula = str_replace('-', '', $_POST['tbclientecedula']);
-        $tbClienteNombre = $_POST['tbclientenombre'];
-        $tbClienteApellidos = $_POST['tbclienteapellidos'];
+        $tbClienteNombre = str_replace(' ', 'OOO',$_POST['tbclientenombre']);
+        $tbClienteApellidos = str_replace(' ', 'OOO', $_POST['tbclienteapellidos']);
         $tbClienteTelefono = str_replace('-', '', $_POST['tbclientetelefono']);
         $tbClienteCorreo = $_POST['tbclientecorreo'];
 
@@ -75,6 +77,8 @@ if (isset($_POST['actualizar'])) {
         ) {
             if (!is_numeric($tbClienteNombre) && !is_numeric($tbClienteApellidos) && ctype_alpha($tbClienteNombre) && ctype_alpha($tbClienteApellidos)) {
                 if (filter_var($tbClienteCorreo, FILTER_VALIDATE_EMAIL)) {
+                    $tbClienteNombre = str_replace('OOO', ' ',$_POST['tbclientenombre']);
+                    $tbClienteApellidos = str_replace('OOO', ' ', $tbClienteApellidos);
                     $Cliente = new Cliente(0, $tbClienteCedula, $tbClienteNombre, $tbClienteApellidos, $tbClienteTelefono, $tbClienteCorreo);
                     $ClienteBusiness = new ClienteBusiness();
                     $result = 0;

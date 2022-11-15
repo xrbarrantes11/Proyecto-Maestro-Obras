@@ -6,8 +6,8 @@ include './ProveedorBusiness.php';
 if (isset($_POST['actualizar'])) {
     if (isset($_POST['tbproveedorid']) && isset($_POST['tbproveedornombre']) && isset($_POST['tbproveedorapellido']) && isset($_POST['tbproveedorcomercio']) && isset($_POST['tbproveedorcedula']) && isset($_POST['tbproveedortelefono']) && isset($_POST['tbproveedorcorreo'])) {
         $tbProveedorId = $_POST['tbproveedorid'];
-        $tbProveedorNombre = $_POST['tbproveedornombre'];
-        $tbProveedorApellido = $_POST['tbproveedorapellido'];
+        $tbProveedorNombre = str_replace(' ','OOO',$_POST['tbproveedornombre']);
+        $tbProveedorApellido = str_replace(' ','OOO',$_POST['tbproveedorapellido']);
         $tbProveedorComercio = $_POST['tbproveedorcomercio'];
         $tbProveedorCedula = str_replace('-','',$_POST['tbproveedorcedula']);
         $tbProveedorTelefono = str_replace('-','',$_POST['tbproveedortelefono']);
@@ -18,6 +18,8 @@ if (isset($_POST['actualizar'])) {
         if (strlen($tbProveedorId) > 0 && strlen($tbProveedorNombre) > 0 && strlen($tbProveedorApellido) > 0 && strlen($tbProveedorComercio) > 0  && strlen($tbProveedorCedula) > 0 && strlen($tbProveedorTelefono) > 0 && strlen($tbProveedorCorreo) > 0) {
             if (!is_numeric($tbProveedorNombre) && !is_numeric($tbProveedorApellido) && ctype_alpha($tbProveedorNombre) && ctype_alpha($tbProveedorApellido)) {
                 if (filter_var($tbProveedorCorreo, FILTER_VALIDATE_EMAIL)) {
+                $tbProveedorApellido = str_replace('OOO',' ',$_POST['tbproveedorapellido']);
+                $tbProveedorNombre = str_replace('OOO',' ',$_POST['tbproveedornombre']);
                 $Proveedor = new Proveedor($tbProveedorId, $tbProveedorNombre, $tbProveedorApellido, $tbProveedorComercio, $tbProveedorCedula, $tbProveedorTelefono, $tbProveedorCorreo);
 
                 $ProveedorBusiness = new ProveedorBusiness();
@@ -73,8 +75,8 @@ header("location: ../view/ProveedorView.php?error=error&var3=$tbProveedorCedula&
 
     if (isset($_POST['tbproveedornombre']) && isset($_POST['tbproveedorapellido']) && isset($_POST['tbproveedorapellido']) && isset($_POST['tbproveedorcedula']) && isset($_POST['tbproveedortelefono']) && isset($_POST['tbproveedorcorreo'])) {
   
-        $tbProveedorNombre = $_POST['tbproveedornombre'];
-        $tbProveedorApellido = $_POST['tbproveedorapellido'];
+        $tbProveedorNombre = str_replace(' ','OOO',$_POST['tbproveedornombre']);
+        $tbProveedorApellido = str_replace(' ','OOO',$_POST['tbproveedorapellido']);
         $tbProveedorComercio = $_POST['tbproveedorcomercio'];
         $tbProveedorCedula = str_replace('-','',$_POST['tbproveedorcedula']);
         $tbProveedorTelefono = str_replace('-','',$_POST['tbproveedortelefono']);
@@ -83,6 +85,8 @@ header("location: ../view/ProveedorView.php?error=error&var3=$tbProveedorCedula&
         if (strlen($tbProveedorNombre) > 0 && strlen($tbProveedorApellido) >  0  && strlen($tbProveedorComercio) > 0 && strlen($tbProveedorCedula) > 0 && strlen($tbProveedorTelefono) > 0 && strlen($tbProveedorCorreo) > 0) {
             if (!is_numeric($tbProveedorNombre) && !is_numeric($tbProveedorApellido) && ctype_alpha($tbProveedorNombre) && ctype_alpha($tbProveedorApellido)) {
                 if(filter_var($tbProveedorCorreo, FILTER_VALIDATE_EMAIL)){
+                    $tbProveedorApellido = str_replace('OOO',' ',$_POST['tbproveedorapellido']);
+                    $tbProveedorNombre = str_replace('OOO',' ',$_POST['tbproveedornombre']);
                     $Proveedor = new Proveedor(0, $tbProveedorNombre, $tbProveedorApellido, $tbProveedorComercio, $tbProveedorCedula, $tbProveedorTelefono, $tbProveedorCorreo);
 
                     $ProveedorBusiness = new ProveedorBusiness();

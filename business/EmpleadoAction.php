@@ -42,8 +42,8 @@ if (isset($_POST['actualizar'])) {
         isset($_POST['tbempleadoid']) && isset($_POST['tbempleadonombre']) && isset($_POST['tbempleadoapellidos']) && isset($_POST['tbempleadocedula'])
         && isset($_POST['tbempleadotelefono'])) {
         $tbEmpleadoId = $_POST['tbempleadoid'];
-        $tbEmpleadoNombre = $_POST['tbempleadonombre'];
-        $tbEmpleadoApellidos = $_POST['tbempleadoapellidos'];
+        $tbEmpleadoNombre = str_replace(' ','OOO',$_POST['tbempleadonombre']);
+        $tbEmpleadoApellidos = str_replace(' ','OOO',$_POST['tbempleadoapellidos']);
         $tbEmpleadoCedula = str_replace('-','',$_POST['tbempleadocedula']);
         $tbEmpleadoTelefono = str_replace('-', '',$_POST['tbempleadotelefono']);
        $tbEmpleadoActivo = $_POST['tbempleadoactivo'];
@@ -59,6 +59,8 @@ if (isset($_POST['actualizar'])) {
             && strlen($tbEmpleadoActivo) > 0
         ) {
             if (!is_numeric($tbEmpleadoNombre) && ctype_alpha($tbEmpleadoNombre) && ctype_alpha($tbEmpleadoApellidos)) {
+                $tbEmpleadoApellidos = str_replace('OOO',' ',$_POST['tbempleadoapellidos']);
+                $tbEmpleadoNombre = str_replace('OOO',' ',$_POST['tbempleadonombre']);
                 $Empleado = new Empleado($tbEmpleadoId, $tbEmpleadoNombre, $tbEmpleadoApellidos, $tbEmpleadoCedula, $tbEmpleadoTelefono, $tbEmpleadoActivo);
 
                 $EmpleadoBusiness = new EmpleadoBusiness();
@@ -101,8 +103,8 @@ if (isset($_POST['actualizar'])) {
     if (isset($_POST['tbempleadonombre']) && isset($_POST['tbempleadoapellidos']) && isset($_POST['tbempleadocedula'])
         && isset($_POST['tbempleadotelefono']) && isset($_POST['tbempleadotipoempleado'])
     ) {
-        $tbEmpleadoNombre = $_POST['tbempleadonombre'];
-        $tbEmpleadoApellidos = $_POST['tbempleadoapellidos'];
+        $tbEmpleadoNombre = str_replace(' ','OOO',$_POST['tbempleadonombre']);
+        $tbEmpleadoApellidos = str_replace(' ','OOO',$_POST['tbempleadoapellidos']);
         $tbEmpleadoCedula = str_replace('-','',$_POST['tbempleadocedula']);
         $tbEmpleadoTelefono = str_replace('-', '',$_POST['tbempleadotelefono']);
         $tbEmpleadoTipoEmpleado = $_POST['tbempleadotipoempleado'];
@@ -118,6 +120,8 @@ if (isset($_POST['actualizar'])) {
             && strlen($tbEmpleadoActivo) > 0
         ) {
             if (!is_numeric($tbEmpleadoNombre) && !is_numeric($tbEmpleadoApellidos) && ctype_alpha($tbEmpleadoNombre) && ctype_alpha($tbEmpleadoApellidos)) {
+                $tbEmpleadoApellidos = str_replace('OOO',' ',$_POST['tbempleadoapellidos']);
+                $tbEmpleadoNombre = str_replace('OOO',' ',$_POST['tbempleadonombre']);
                 $Empleado = new Empleado(0, $tbEmpleadoNombre, $tbEmpleadoApellidos, $tbEmpleadoCedula, $tbEmpleadoTelefono, $tbEmpleadoActivo);
                 $EmpleadoBusiness = new EmpleadoBusiness();
                 $EmpleadoTipoAsignadoBusiness = new EmpleadoTipoAsignadoBusiness();

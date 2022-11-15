@@ -10,7 +10,7 @@ if (isset($_POST['actualizar'])) {
         && isset($_POST['tbobraperdida']) && isset($_POST['tbobradiasestimadoobra'])
     ) {
         $tbObraId = $_POST['tbobraid'];
-        $tbObraNombre = $_POST['tbobranombre'];
+        $tbObraNombre = str_replace(' ','OOO',$_POST['tbobranombre']);
         $tbObraDescripcion = $_POST['tbobradescripcion'];
         $tbClienteId = $_POST['tbcliente'];
         echo $tbClienteId;
@@ -35,6 +35,7 @@ if (isset($_POST['actualizar'])) {
             && strlen($tbObraDiasFinalizacionAtrasado) > 0 && strlen($tbObraGanancia) > 0 && strlen($tbObraPerdida) > 0 && strlen($tbObraDiasEstimadoObra) > 0
         ) {
             if (!is_numeric($tbObraNombre) && ctype_alpha($tbObraNombre) && is_numeric($tbObraDiasFinalizacionAnticipada) && is_numeric($tbObraDiasFinalizacionAtrasado) && is_numeric($tbObraDiasEstimadoObra)) {
+                $tbObraNombre = str_replace('OOO',' ',$_POST['tbobranombre']);
                 $Obra = new Obra(
                     $tbObraId,
                     $tbObraNombre,
@@ -90,7 +91,7 @@ if (isset($_POST['actualizar'])) {
         isset($_POST['tbobranombre']) && isset($_POST['tbobradescripcion']) && isset($_POST['tbclienteid'])
         && isset($_POST['tbobrafechainicio']) && isset($_POST['tbobrafechaentrega']) && isset($_POST['tbobracostoestimado'])
     ) {
-        $tbObraNombre = $_POST['tbobranombre'];
+        $tbObraNombre = str_replace(' ','OOO',$_POST['tbobranombre']);
         $tbObraDescripcion = $_POST['tbobradescripcion'];
         $tbClienteId = $_POST['tbclienteid'];
         $tbObraFechaInicio = $_POST['tbobrafechainicio'];
@@ -114,6 +115,7 @@ if (isset($_POST['actualizar'])) {
         ) {
 
             if (!is_numeric($tbObraNombre) && ctype_alpha($tbObraNombre) && is_numeric($tbObraDiasFinalizacionAnticipada) && is_numeric($tbObraDiasFinalizacionAtrasado) && is_numeric($tbObraDiasEstimadoObra)) {
+                $tbObraNombre = str_replace('OOO',' ',$_POST['tbobranombre']);
                 $Obra = new Obra(
                     0,
                     $tbObraNombre,

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <script src="../js/FunctionProyectos.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Monto pago por hora de empleados</title>
+    <title>Asignar Tipo de Empleado a Obra</title>
     <script src="https://jsuites.net/v4/jsuites.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php

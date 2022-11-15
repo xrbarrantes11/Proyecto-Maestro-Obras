@@ -63,7 +63,7 @@
             <tr>
 
                 <th>Nombre</th>
-                <th>Apellido</th>
+                <th>Apellidos</th>
                 <th>Cedula</th>
                 <th>Telefono</th>
                 <th>Tipo de Empleado</th>
@@ -110,7 +110,7 @@
             <table>
                 <tr>
                     <th>Nombre</th>
-                    <th>Apellido</th>
+                    <th>Apellidos</th>
                     <th>Cedula</th>
                     <th>Telefono</th>
                     <th>Tipo de Empleado</th>
