@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2022 a las 23:45:55
--- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 7.4.21
+-- Tiempo de generación: 15-11-2022 a las 01:51:12
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -612,16 +612,6 @@ ALTER TABLE `tbsalario`
 --
 ALTER TABLE `tbsalarioperiodo`
   ADD PRIMARY KEY (`tbsalarioperiodoid`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `tbobraetapa`
---
-ALTER TABLE `tbobraetapa`
-  MODIFY `tbobraetapaid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
