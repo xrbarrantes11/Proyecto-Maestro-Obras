@@ -42,7 +42,7 @@
 
                     echo '<form method="post" enctype="multipart/form-data" action="../business/ObraEtapaMaterialesAction.php">';
                     echo '<td><input type="hidden" readonly name="etapamaterialid" id="etapamaterialid" value="' . $current->getObraEtapaMaterialesId(). '"/></td>';
-                    echo '<td><input  type="text" readonly name="nombreetapa" id="nombreetapa" value="' . $ObraEtapaBusiness->getNombreEtapa($current->getEtapaId()) .  '"/></td>';
+                    echo '<td><input type="text" readonly name="nombreetapa" id="nombreetapa" value="' . $ObraEtapaBusiness->getNombreEtapa($current->getEtapaId()) .  '"/></td>';
                     echo '<td><input required type="text" name="nombrematerial" id="nombrematerial" value="' . $current->getEtapaNombreMateriales() . '"/></td>';
                     echo '<td><input required type="text" data-mask  ="00000" name="cantidadmaterial" id="cantidadmaterial" value="' . $current->getEtapaCantidad() . '"/></td>';
                     echo '<td><input required type="text" data-mask  ="₡ #.##0,00" name="montoaproximado" id="montoaproximado" value="₡' . $current->getEtapaCostoAproximado() . '"/></td>';

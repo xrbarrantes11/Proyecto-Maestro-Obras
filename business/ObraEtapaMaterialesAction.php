@@ -20,7 +20,7 @@ if (isset($_POST['actualizar'])) {
             && strlen($montoAproximado) > 0
         ) {
             if (!is_numeric($nombreMaterial)) {
-                $ObraEtapaMat = new ObraEtapaMaterialesBusiness($etapaMaterialId, $nombreEtapaMat, $nombreMaterial, $cantidadMaterial, $montoAproximado);
+                $ObraEtapaMat = new ObraEtapaMateriales($etapaMaterialId, $nombreEtapaMat, $nombreMaterial, $cantidadMaterial, $montoAproximado);
 
                 $ObraEtapaMaterialesBusiness = new ObraEtapaMaterialesBusiness();
 
