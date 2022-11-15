@@ -12,7 +12,7 @@ error_reporting(0);
 
     <?php
     include '../business/ObraEtapaBusiness.php';
-    include'../business/ObrasBusiness.php'
+    include '../business/ObrasBusiness.php'
     ?>
 
 </head>
@@ -39,14 +39,15 @@ error_reporting(0);
             $ObraEtapaBusiness = new ObraEtapaBusiness();
             $allObraEtapa = $ObraEtapaBusiness->getAllObraEtapa();
             foreach ($allObraEtapa as $current) {
-              echo '<form method="post" enctype="multipart/form-data" action="../business/ObraEtapaAction.php">';
+                echo '<form method="post" enctype="multipart/form-data" action="../business/ObraEtapaAction.php">';
                 echo '<input type="hidden" name="tbobraetapaid" value="' . $current->getObraEtapaId() . '">';
                 echo '<td><input type="text" readonly name="tbobraid" id="tbobraid" value="' .$ObrasBusiness->getObra($current->getObraId())  . '"/></td>';
                 echo '<td><input type="text"  name="tbobraetapanombre" id="tbobraetapanombre" value="' . $current->getObraEtapaNombre() . '"/></td>';
                 echo '<td><input type="text" size ="60" name="tbobraetapadescricion" id="tbobraetapadescricion" value="' . $current->getObraEtapaDescripcion() . '"/></td>';
-                echo '<td><input type="text" name="tbobraetapaduracionaproximada" id="tbobraetapaduracionaproximada" value="' . $current->getObraEtapaDuracionAproximada() . '"/></td>';
+                echo '<td><input type="number" name="tbobraetapaduracionaproximada" id="tbobraetapaduracionaproximada" value="' . $current->getObraEtapaDuracionAproximada() . '"/></td>';
                 echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
                 echo '<td><button onclick="eliminarObraEtapa(' . $current->getObraEtapaId() . ')">Eliminar</button></td>';
+                echo '<td><input type="hidden"  name="tbobra" id="tbobra" value="' .$current->getObraId() . '"/></td>';
                 echo '</tr>';
                 echo '</form>';
             }
@@ -81,7 +82,7 @@ error_reporting(0);
                 $tbObraEtapaDescripcion = $_GET['var3'];
             }
             if (isset($_GET['var4'])) {
-                $tbObraEtapaDuracionAproximada = $_GET['var3'];
+                $tbObraEtapaDuracionAproximada = $_GET['var4'];
             }
             ?>
             <form method="post" enctype="multipart/form-data" action="../business/ObraEtapaAction.php">
@@ -101,7 +102,7 @@ error_reporting(0);
                         <?php
                     echo '<td><input required type="text" name="tbobraetapanombre" id="tbobraetapanombre" value="' . $tbObraEtapaNombre . '"/></td>';
                     echo '<td><input required type="text" size ="60" name="tbobraetapadescricion" id="tbobraetapadescricion" value="' . $tbObraEtapaDescripcion . '"/></td>';
-                    echo '<td><input required type="text" name="tbobraetapaduracionaproximada" id="tbobraetapaduracionaproximada" value="' . $tbObraEtapaDuracionAproximada . '"/></td>';
+                    echo '<td><input required type="number" name="tbobraetapaduracionaproximada" id="tbobraetapaduracionaproximada" value="' . $tbObraEtapaDuracionAproximada . '"/></td>';
 
                     ?>
                     <td><input type="submit" value="Ingresar" name="crear" id="crear" /></td>

@@ -4,11 +4,12 @@ include './ObraEtapaBusiness.php';
 
 if (isset($_POST['actualizar'])) {
     if (
-        isset($_POST['tbobraetapaid']) && isset($_POST['tbobraid']) && isset($_POST['tbobraetapanombre']) && isset($_POST['tbobraetapadescricion'])
+        isset($_POST['tbobraetapaid']) && isset($_POST['tbobra']) && isset($_POST['tbobraetapanombre']) && isset($_POST['tbobraetapadescricion'])
         && isset($_POST['tbobraetapaduracionaproximada'])
     ) {
         $tbObraEtapaId = $_POST['tbobraetapaid'];
-        $tbObraId =  $_POST['tbobraid'];
+        $tbObraId =  $_POST['tbobra'];
+        echo $tbObraId;
         $tbObraEtapaNombre = $_POST['tbobraetapanombre'];
         $tbObraEtapaDescripcion = $_POST['tbobraetapadescricion'];
         $tbObraEtapaDuracionAproximada = $_POST['tbobraetapaduracionaproximada'];
@@ -17,7 +18,7 @@ if (isset($_POST['actualizar'])) {
             strlen($tbObraEtapaId) > 0 && strlen($tbObraId) > 0 && strlen($tbObraEtapaNombre) > 0 && strlen($tbObraEtapaDescripcion) > 0
             && strlen($tbObraEtapaDuracionAproximada) > 0
         ) {
-            if (!is_numeric($tbObraEtapaNombre)) {
+            if (!is_numeric($tbObraEtapaNombre) && ctype_alpha($tbObraEtapaNombre)) {
                 $ObraEtapa = new ObraEtapa($tbObraEtapaId, $tbObraId, $tbObraEtapaNombre, $tbObraEtapaDescripcion, $tbObraEtapaDuracionAproximada);
 
                 $ObraEtapaBusiness = new ObraEtapaBusiness();
@@ -72,7 +73,7 @@ if (isset($_POST['actualizar'])) {
             && strlen($tbObraEtapaDuracionAproximada) > 0
         ) {
 
-            if (!is_numeric($tbObraEtapaNombre)) {
+            if (!is_numeric($tbObraEtapaNombre) && ctype_alpha($tbObraEtapaNombre)) {
 
                 $ObraEtapa = new ObraEtapa(0, $tbObraId, $tbObraEtapaNombre, $tbObraEtapaDescripcion, $tbObraEtapaDuracionAproximada);
 
@@ -86,8 +87,8 @@ if (isset($_POST['actualizar'])) {
                     header("location: ../view/ObraEtapaView.php?error=dbError&var1=$tbObraId&var2=$tbObraEtapaNombre&var3$tbObraEtapaDescripcion&var4$tbObraEtapaDuracionAproximada");
                 }
             } else {
-                if ((is_numeric($tbObraEtapaNombre))) {
-                    header("location: ../view/ObraEtapaView.php?error=stringFormat&var1=$tbObraId&var3$tbObraEtapaDescripcion&var4$tbObraEtapaDuracionAproximada");
+                if ((is_numeric($tbObraEtapaNombre) || !ctype_alpha($tbObraEtapaNombre))) {
+                    header("location: ../view/ObraEtapaView.php?error=stringFormat&var1$tbObraId&var3$tbObraEtapaDescripcion&var4$tbObraEtapaDuracionAproximada");
                 }
             }
         } else {
