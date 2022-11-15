@@ -39,7 +39,7 @@ error_reporting(0);
             $ObraEtapaBusiness = new ObraEtapaBusiness();
             $allObraEtapa = $ObraEtapaBusiness->getAllObraEtapa();
             foreach ($allObraEtapa as $current) {
-              //  echo '<form method="post" enctype="multipart/form-data" action="../business/ObraEtapaAction.php">';
+              echo '<form method="post" enctype="multipart/form-data" action="../business/ObraEtapaAction.php">';
                 echo '<input type="hidden" name="tbobraetapaid" value="' . $current->getObraEtapaId() . '">';
                 echo '<td><input type="text" readonly name="tbobraid" id="tbobraid" value="' .$ObrasBusiness->getObra($current->getObraId())  . '"/></td>';
                 echo '<td><input type="text"  name="tbobraetapanombre" id="tbobraetapanombre" value="' . $current->getObraEtapaNombre() . '"/></td>';
