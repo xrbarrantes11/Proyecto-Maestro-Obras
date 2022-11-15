@@ -7,6 +7,7 @@ error_reporting(0);
     <script src="../js/FunctionProyecto.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Etapas de la Obra</title>
+    <script src="https://jsuites.net/v4/jsuites.js"></script>  
     <link rel="stylesheet" href="../resources/css/css.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -44,7 +45,7 @@ error_reporting(0);
                 echo '<td><input type="text" readonly name="tbobraid" id="tbobraid" value="' .$ObrasBusiness->getObra($current->getObraId())  . '"/></td>';
                 echo '<td><input type="text"  name="tbobraetapanombre" id="tbobraetapanombre" value="' . $current->getObraEtapaNombre() . '"/></td>';
                 echo '<td><input type="text" size ="60" name="tbobraetapadescricion" id="tbobraetapadescricion" value="' . $current->getObraEtapaDescripcion() . '"/></td>';
-                echo '<td><input type="number" name="tbobraetapaduracionaproximada" id="tbobraetapaduracionaproximada" value="' . $current->getObraEtapaDuracionAproximada() . '"/></td>';
+                echo '<td><input type="text" data-mask  ="00000" name="tbobraetapaduracionaproximada" id="tbobraetapaduracionaproximada" value="' . $current->getObraEtapaDuracionAproximada() . '"/></td>';
                 echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
                 echo '<td><button onclick="eliminarObraEtapa(' . $current->getObraEtapaId() . ')">Eliminar</button></td>';
                 echo '<td><input type="hidden"  name="tbobra" id="tbobra" value="' .$current->getObraId() . '"/></td>';
@@ -102,7 +103,7 @@ error_reporting(0);
                         <?php
                     echo '<td><input required type="text" name="tbobraetapanombre" id="tbobraetapanombre" value="' . $tbObraEtapaNombre . '"/></td>';
                     echo '<td><input required type="text" size ="60" name="tbobraetapadescricion" id="tbobraetapadescricion" value="' . $tbObraEtapaDescripcion . '"/></td>';
-                    echo '<td><input required type="number" name="tbobraetapaduracionaproximada" id="tbobraetapaduracionaproximada" value="' . $tbObraEtapaDuracionAproximada . '"/></td>';
+                    echo '<td><input required type="text" data-mask  ="0000" name="tbobraetapaduracionaproximada" id="tbobraetapaduracionaproximada" value="' . $tbObraEtapaDuracionAproximada . '"/></td>';
 
                     ?>
                     <td><input type="submit" value="Ingresar" name="crear" id="crear" /></td>
