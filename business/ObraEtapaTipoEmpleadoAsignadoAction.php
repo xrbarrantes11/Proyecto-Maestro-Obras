@@ -30,4 +30,21 @@ if (isset($_POST['crear'])) {
     } else {
         header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?error=stringFormat");
     }
+} else if (strcmp($_POST['action'], 'delete') == 0) { //delete
+    if (isset($_POST['tbobraetapaempleadotipoasignadoid'])) {
+
+        $obraTipoEmpleadoId = $_POST['tbobraetapaempleadotipoasignadoid'];
+
+        $ObraEtapaTipoEmpleadoAsignadoBusiness = new ObraEtapaTipoEmpleadoAsignadoBusiness();
+        $result = $ObraEtapaTipoEmpleadoAsignadoBusiness->deleteObraTipoEmpleadoAsignado($obraTipoEmpleadoId);
+
+
+        if ($result == 1) {
+            echo "Transaccion realizada y borrada";
+        } else {
+            echo "Error al procesar la transacción";
+        }
+    } else {
+        echo "Error de informacion";
+    }
 }
