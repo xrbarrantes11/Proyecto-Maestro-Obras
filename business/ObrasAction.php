@@ -168,4 +168,21 @@ if (isset($_POST['actualizar'])) {
     } else {
         header("location: ../view/ObrasView.php?error=error");
     }
+} else if (strcmp($_POST['action'], 'finalizar') == 0) { //delete
+    if (isset($_POST['obraId'])) {
+
+        $ObraId = $_POST['obraId'];
+
+        $ObrasBusiness = new ObrasBusiness();
+        $result = $ObrasBusiness->finalizarObra($ObraId);
+
+
+        if ($result == 1) {
+            echo "Transaccion realizada";
+        } else {
+            echo "Error al procesar la transacción";
+        }
+    } else {
+        echo "Error de informacion";
+    }
 }

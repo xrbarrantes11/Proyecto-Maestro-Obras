@@ -121,18 +121,32 @@ class ObrasData extends Data {
         return $nombreObras;
     }
 
-}
+    public function getObrasPendientes() {
+        $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
+        $conn->set_charset('utf8');
 
-/*if(isset($_POST["buscar"])){
-    $con = new Database();
-    $pdo = $con->conectar();
-    $palabra = $_POST["buscar"];
-    $sql = "SELECT tbobranombre FROM tbobra WHERE tbobranombre LIKE ? ORDER BY tbobranombre ASC LIMIT 0, 5;";
-    $query = $pdo->prepare($sql);
-    $query->execute([$palabra . '%']);
-    $result = "";
-    while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-    $result .= "<li onclick=\"mostrar('". $row["tbobranombre"] ."')\">".$row["tbobranombre"] . " - " . $row["tbempleadocedula"] . "</li>";
+        $querySelect = "SELECT * FROM tbobra where tbobrafinalizada = 0;";
+        $result = mysqli_query($conn, $querySelect);
+        mysqli_close($conn);
+        $Obras = [];
+        while ($row = mysqli_fetch_array($result)) {
+            $currentObra = new Obra($row['tbobraid'], $row['tbobranombre'], $row['tbobradescripcion'], 
+            $row['tbclienteid'], $row['tbobrafechainicio'], $row['tbobrafechaentrega'], $row['tbobrafechaestimadofinalizacion'], $row['tbobracostoestimado']
+            , $row['tbobracostofinalizado'], $row['tbobradiasfinalizacionanticipada'], $row['tbobradiasfinalizacionatrasado'], $row['tbobraganancia'], $row['tbobraperdida']
+            , $row['tbobradiasestimadoobra'], $row['tbobrafinalizada']);
+            array_push($Obras, $currentObra);
+        }
+        return $Obras;
     }
-    echo json_encode($result, JSON_UNESCAPED_UNICODE);
-}*/
+
+    public function finalizarObra($ObraId) {
+        $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
+        $conn->set_charset('utf8');
+        $queryUpdate = "UPDATE tbobra SET tbobrafinalizada=1 WHERE tbobraid=" . $ObraId . ";";
+
+        $result = mysqli_query($conn, $queryUpdate);
+        mysqli_close($conn);
+        return $result;
+    }
+
+}

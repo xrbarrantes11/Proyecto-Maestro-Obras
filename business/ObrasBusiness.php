@@ -26,12 +26,20 @@ class ObrasBusiness {
         return $this->ObrasData->getAllObra();
     }
 
+    public function getObrasPendientes() {
+        return $this->ObrasData->getObrasPendientes();
+    }
+
     public function getObra($obraId){
         return $this->ObrasData->getObra($obraId);
     }
 
     public function getNombreObras($idObras) {
         return $this->ObrasData->getNombreObras($idObras);
+    }
+
+    public function finalizarObra($ObraId) {
+        return $this->ObrasData->finalizarObra($ObraId);
     }
  
 }

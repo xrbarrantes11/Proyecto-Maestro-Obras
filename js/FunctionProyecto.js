@@ -364,6 +364,23 @@ function eliminarObraEtapa(id) {
     } else { }
 }
 
+function finalizarObra(id) {
+    if (confirm("Seguro que desea finalizar la obra?")) {
+        const data = new FormData();//crea formulario
+        data.append("action", "finalizar");//le indica la acción del formulario como parametro de nombre action con valor logOut
+        data.append("obraId", id);//indica la variable que quiere enviar al action php
+        var http = new XMLHttpRequest();//crea la variable http para el envió de datos a la controller 
+        http.open('POST', '../business/ObrasAction.php', true);//define el metodo de envio post o get y la ruta de archivo de la controller 
+        http.send(data);//envia el formulario
+        http.onreadystatechange = function () {//espera respuesta
+            if (http.readyState === 4) {//respuesta correcta
+                alert(http.responseText);
+                document.location = '../view/ObraFinalizarView.php';
+            }
+        };
+    } else { }
+}
+
 function mostrar(nombre) {
     var ajax = new XMLHttpRequest();
     document.location = '../view/EmpleadoView.php?var1='+nombre;
