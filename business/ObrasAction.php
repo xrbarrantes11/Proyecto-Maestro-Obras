@@ -28,7 +28,11 @@ if (isset($_POST['actualizar'])) {
         $tbObraPerdidaAux = str_replace('₡','',$_POST['tbobraperdida']);
         $tbObraPerdida = str_replace('.','', $tbObraPerdidaAux);
         $tbObraDiasEstimadoObra = $_POST['tbobradiasestimadoobra'];
-
+        if($_POST['tbobrafinalizada'] == "Finalizada"){
+        $tbObraFinalizada = 1;
+        }else if($_POST['tbobrafinalizada'] == "Pendiente"){
+        $tbObraFinalizada = 0;
+        }
         if (
             strlen($tbObraId) > 0 && strlen($tbObraNombre) > 0 && strlen($tbObraDescripcion) > 0 && strlen($tbClienteId) > 0 && strlen($tbObraFechaInicio) > 0
             && strlen($tbObraFechaEntrega) > 0 && strlen($tbObraFechaEstimadoFinalizacion) > 0 && strlen($tbObraCostoEstimado) > 0 && strlen($tbObraCostoFinalizado) > 0 && strlen($tbObraDiasFinalizacionAnticipada) > 0
@@ -50,7 +54,8 @@ if (isset($_POST['actualizar'])) {
                     $tbObraDiasFinalizacionAtrasado,
                     $tbObraGanancia,
                     $tbObraPerdida,
-                    $tbObraDiasEstimadoObra
+                    $tbObraDiasEstimadoObra,
+                    $tbObraFinalizada
                 );
                 $ObrasBusiness = new ObrasBusiness();
                 $resultado = $ObrasBusiness->updateObra($Obra);
@@ -89,7 +94,7 @@ if (isset($_POST['actualizar'])) {
 
     if (
         isset($_POST['tbobranombre']) && isset($_POST['tbobradescripcion']) && isset($_POST['tbclienteid'])
-        && isset($_POST['tbobrafechainicio']) && isset($_POST['tbobrafechaentrega']) && isset($_POST['tbobracostoestimado'])
+        && isset($_POST['tbobrafechainicio']) && isset($_POST['tbobrafechaentrega']) && isset($_POST['tbobracostoestimado']) && isset($_POST['tbobrafinalizada'])
     ) {
         $tbObraNombre = str_replace(' ','OOO',$_POST['tbobranombre']);
         $tbObraDescripcion = $_POST['tbobradescripcion'];
@@ -108,6 +113,7 @@ if (isset($_POST['actualizar'])) {
         $tbObraPerdidaAux = str_replace('₡','',$_POST['tbobraperdida']);
         $tbObraPerdida = str_replace('.','',$tbObraPerdidaAux);
         $tbObraDiasEstimadoObra = $_POST['tbobradiasestimadoobra'];
+        $tbObraFinalizada = $_POST['tbobrafinalizada'];
 
         if (
             strlen($tbObraNombre) > 0 && strlen($tbObraDescripcion) > 0
@@ -130,7 +136,8 @@ if (isset($_POST['actualizar'])) {
                     $tbObraDiasFinalizacionAtrasado,
                     $tbObraGanancia,
                     $tbObraPerdida,
-                    $tbObraDiasEstimadoObra
+                    $tbObraDiasEstimadoObra,
+                    $tbObraFinalizada
                 );
                 $ObrasBusiness = new ObrasBusiness();
                 $result = $ObrasBusiness->insertObra($Obra);

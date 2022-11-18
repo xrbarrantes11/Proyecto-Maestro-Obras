@@ -29,7 +29,8 @@ class ObrasData extends Data {
                 $Obra->getObraDiasFinalizacionAtrasado() . "," .
                 $Obra->getObraGanancia() . "," .
                 $Obra->getObraPerdida() . "," .
-                $Obra->getObraDiasEstimadoObra() . ");";
+                $Obra->getObraDiasEstimadoObra() . "," .
+                $Obra->getObraFinalizada() . ");";
 
         $result = mysqli_query($conn, $queryInsert);
         mysqli_close($conn);
@@ -52,6 +53,7 @@ class ObrasData extends Data {
                 ", tbobraganancia=" . $Obra->getObraGanancia() .
                 ", tbobraperdida=" . $Obra->getObraPerdida() .
                 ", tbobradiasestimadoobra=" . $Obra->getObraDiasEstimadoObra() .
+                ", tbobrafinalizada=" . $Obra->getObraFinalizada() .
                 " WHERE tbobraid=" . $Obra->getObraId() . ";";
 
         $result = mysqli_query($conn, $queryUpdate);
@@ -82,7 +84,7 @@ class ObrasData extends Data {
             $currentObra = new Obra($row['tbobraid'], $row['tbobranombre'], $row['tbobradescripcion'], 
             $row['tbclienteid'], $row['tbobrafechainicio'], $row['tbobrafechaentrega'], $row['tbobrafechaestimadofinalizacion'], $row['tbobracostoestimado']
             , $row['tbobracostofinalizado'], $row['tbobradiasfinalizacionanticipada'], $row['tbobradiasfinalizacionatrasado'], $row['tbobraganancia'], $row['tbobraperdida']
-            , $row['tbobradiasestimadoobra']);
+            , $row['tbobradiasestimadoobra'], $row['tbobrafinalizada']);
             array_push($Obras, $currentObra);
         }
         return $Obras;

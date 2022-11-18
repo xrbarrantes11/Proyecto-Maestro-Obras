@@ -17,9 +17,10 @@ class Obra
     private $obraGanancia;
     private $obraPerdida;
     private $obraDiasEstimadoObra;
+    private $obraFinalizada;
 
     function Obra($obraId, $obraNombre, $obraDescripcion, $clienteId, $obraFechaInicio, $obraFechaEntrega, $obraFechaEstimadaFinalizacion, $obraCostoEstimado, $obraCostoFinalizado,
-    $obraDiasFinalizacionAnticipada, $obraDiasFinalizacionAtrasado, $obraGanancia, $obraPerdida, $obraDiasEstimadoObra)
+    $obraDiasFinalizacionAnticipada, $obraDiasFinalizacionAtrasado, $obraGanancia, $obraPerdida, $obraDiasEstimadoObra, $obraFinalizada)
     {
 
         $this->obraId = $obraId;
@@ -36,6 +37,7 @@ class Obra
         $this->obraGanancia = $obraGanancia;
         $this->obraPerdida = $obraPerdida;
         $this->obraDiasEstimadoObra = $obraDiasEstimadoObra;
+        $this->obraFinalizada = $obraFinalizada;
     }
 
     function getObraId()
@@ -108,6 +110,11 @@ class Obra
         return $this->obraDiasEstimadoObra;
     }
 
+    function getObraFinalizada()
+    {
+        return $this->obraFinalizada;
+    }
+
     function setObraId($obraId)
     {
         $this->obraId = $obraId;
@@ -176,5 +183,10 @@ class Obra
     function setObraDiasEstimadoObra($obraDiasEstimadoObra)
     {
         $this->obraDiasEstimadoObra = $obraDiasEstimadoObra;
+    }
+
+    function setObraFinalizada($obraFinalizada)
+    {
+        $this->obraFinalizada = $obraFinalizada;
     }
 }

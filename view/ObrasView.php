@@ -31,7 +31,6 @@ error_reporting(0);
             padding: 10px;
             width: 100%;
             float: left;
-
         }
     </style>
 </head>
@@ -158,6 +157,7 @@ error_reporting(0);
                         echo '<td><input required type="text" data-mask  ="₡ #.##0,00" value = "0" name="tbobraganancia" id="tbobraganancia" value="₡ ' . $obraGanancia . '"/></td>';
                         echo '<td><input required type="text" data-mask  ="₡ #.##0,00" value = "0" name="tbobraperdida" id="tbobraperdida" value="₡ ' . $obraPerdida . '"/></td>';
                         echo '<td><input required type="text" name="tbobradiasestimadoobra" value = "0" id="tbobradiasestimadoobra" value="' . $obraDiasEstimados .'"/></td>';
+                        echo '<td><input required type="hidden" name="tbobrafinalizada" id="tbobrafinalizada" value="0"/></td>';
                         ?>
                     <td><input type="submit" value="Ingresar" name="crear" id="crear" /></td>
                 </tr>
@@ -179,6 +179,7 @@ error_reporting(0);
                 <th>Ganancia</th>
                 <th>Perdida</th>
                 <th>Días Estimados de Obra</th>
+                <th>Estado de la Obra</th>
             </tr>
             <tbody id=buscarObra>
                 <?php
@@ -202,6 +203,11 @@ error_reporting(0);
                     echo '<td><input type="text" data-mask  ="₡ #.##0,00" name="tbobraganancia" id="tbobraganancia" value="₡ ' . $current->getObraGanancia() . '"/></td>';
                     echo '<td><input type="text" data-mask  ="₡ #.##0,00" name="tbobraperdida" id="tbobraperdida" value="₡ ' . $current->getObraPerdida() . '"/></td>';
                     echo '<td><input type="text" name="tbobradiasestimadoobra" id="tbobradiasestimadoobra" value="' . $current->getObraDiasEstimadoObra() . '"/></td>';
+                    if($current->getObraFinalizada() == 1){
+                    echo '<td><input type="text" readonly name="tbobrafinalizada" id="tbobrafinalizada" value="Finalizada"/></td>';
+                    }else{
+                    echo '<td><input type="text" readonly name="tbobrafinalizada" id="tbobrafinalizada" value="Pendiente"/></td>';
+                    }
                     echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
                     echo '<td><button onclick="eliminarObra(' . $current->getObraId() . ')">Eliminar</button></td>';
                     echo '<td><input type="hidden" name="tbcliente" id="tbcliente" value="' . $current->getClienteId() . '"/></td>';
