@@ -5,7 +5,7 @@ include '../domain/ObraImagenes.php';
 
 class ObraImagenesData extends Data{
 
-    public function insertCotizacionImagen($obraImagenes) {
+    public function insertObraImagenes($obraImagenes) {
         $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
         $conn->set_charset('utf8');
     
@@ -17,7 +17,7 @@ class ObraImagenesData extends Data{
             if ($row = mysqli_fetch_row($idCont)) {
                 $nextId = trim($row[0]) + 1;
             }
-            $queryInsert = "INSERT INTO tbcotizacionimagen VALUES (" . $nextId . ",'" .
+            $queryInsert = "INSERT INTO tbobraimagenes VALUES (" . $nextId . ",'" .
                     $obraImagenes->getObraId() . "','" .
                     $obraImagenes->getObraImagenesRuta() . "');";
     
