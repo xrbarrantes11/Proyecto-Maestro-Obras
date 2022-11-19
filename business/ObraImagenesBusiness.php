@@ -1,5 +1,6 @@
 <?php
 
+
 include '../data/ObraImagenesData.php';
 
 class ObraImagenesBusiness{
@@ -10,16 +11,15 @@ class ObraImagenesBusiness{
         $this->ObraImagenesData = new ObraImagenesData();
     }
 
-    public function insertObraImagenes($obraImagenes){
-        $this->ObraImagenesData->insertObraImagenes($obraImagenes);
-    }
-
-    public function deleteObraImagenes($obraImagenesId){
-        $this->ObraImagenesData->deleteObraImagenes($obraImagenesId);
+    public function insertCotizacionImagen($obraImagenes){
+        return $this->ObraImagenesData->insertObraImagenes($obraImagenes);
     }
 
     public function getAllObraImagenes(){
-        $this->ObraImagenesData->getAllObraImagenes();
+        return $this->ObraImagenesData->getAllObraImagenes();
     }
-    
+
+    public function deleteCotizacionImagen($obraImagenesId) {
+        return $this->ObraImagenesData->deleteObraImagenes($obraImagenesId);
+    }
 }
