@@ -11,7 +11,7 @@ class ObraImagenesBusiness{
     }
 
     public function insertObraImagenes($obraImagenes){
-        $this->ObraImagenesData->insertCotizacionImagen($obraImagenes);
+        $this->ObraImagenesData->insertObraImagenes($obraImagenes);
     }
 
     public function deleteObraImagenes($obraImagenesId){
