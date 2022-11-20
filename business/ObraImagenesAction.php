@@ -7,26 +7,24 @@ if(isset($_POST['create'])){
 
         $obraId = $_POST['obraid'];
         $fichero = $_FILES["obraimagen"];
-        $img = '';
+        $obraimagenId = isset($_POST['obraimagenid']);
 
         foreach($fichero["tmp_name"] as $key => $image){
             $nombreArchivo = $_FILES["obraimagen"]["name"][$key];
             $tipoArchivo = $_FILES["obraimagen"]["type"][$key];
             $tmpArchivo = $_FILES["obraimagen"]["tmp_name"][$key];
-            $directorio = "../cotizacionimages/";
+            $directorio = "../obraimagenes/";
+            $nombre = $obraimagenId."-".$obraId;
 
-            $img = $nombreArchivo.',';
-
-            move_uploaded_file($tmpArchivo, "../cotizacionimages/".$nombreArchivo);
-            $ruta = $directorio.$nombreArchivo.".".$tipoArchivo;
-            $ObraImagen = new ObraImagenes(0, $obraId, $directorio.$img);
+            move_uploaded_file($tmpArchivo, "../obraimagenes/".$nombreArchivo);
+            rename($directorio.$nombreArchivo, $directorio.$nombre.".".$tipoArchivo);
+            $ruta = $directorio.$nombre.".".$tipoArchivo;
+            $ObraImagen = new ObraImagenes(0, $obraId, $directorio.$ruta);
             $ObraImagenBusiness = new ObraImagenesBusiness();
             $result = $ObraImagenBusiness->insertObraImagenes($ObraImagen);
 
         }
 
-        //$ruta = $directorio.$nombre.".".$tipoArchivo;
-        //rename ($directorio.$nombreArchivo, $directorio.$nombre.".".$tipoArchivo);
         if ($result == 1) {
             header("location: ../view/ObraImagenesView.php?success=inserted");
         } else {
@@ -44,7 +42,7 @@ if(isset($_POST['create'])){
     $result = $ObraImagenBusiness->deleteObraImagenes($obraimagenId);
     
     if ($result == 1) {
-        unlink("../cotizacionimages/".$obraimagenRuta);
+        unlink("../obraimagenes/".$obraimagenRuta);
         echo "Transaccion realizada";
         header("location: ../view/ObraImagenesView.php");
     } else {
