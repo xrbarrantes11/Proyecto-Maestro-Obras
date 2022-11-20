@@ -30,5 +30,6 @@ error_reporting(0);
     <a href="./view/EmpleadoTipoEmpleadoPagoRangoView.php">Gestion del rango de pago de un tipo de empleado</a><br>
     <a href="./view/SalarioPeriodoView.php">Gestion de salario por periodo</a><br>
     <a href="./view/PagoPeriodoView.php">Realizar pago a empleado</a><br>
+    <a href="./view/ObraImagenesView.php">Gestion de obra imagenes</a>
 </body>
 </html>
