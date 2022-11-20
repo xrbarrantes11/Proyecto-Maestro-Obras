@@ -62,7 +62,7 @@
                                     <option value="<?php echo $tipo->getObraId() ?>"><?php echo $tipo->getObraNombre() ?></option>
                                 <?php } ?>
                             </select></td>
-                    <td><input type="file" required name="obraimagen[]" id="obraimagen" multiple></td>
+                    <td><input required type="file" name="obraimagen[]" multiple></td>
                     <td><input type="submit" value="Ingresar" name="create" id="create" /></td>
                 </tr>
             </form>
