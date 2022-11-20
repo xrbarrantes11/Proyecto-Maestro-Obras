@@ -11,7 +11,7 @@ class ObraImagenesBusiness{
         $this->ObraImagenesData = new ObraImagenesData();
     }
 
-    public function insertCotizacionImagen($obraImagenes){
+    public function insertObraImagenes($obraImagenes){
         return $this->ObraImagenesData->insertObraImagenes($obraImagenes);
     }
 
@@ -19,7 +19,7 @@ class ObraImagenesBusiness{
         return $this->ObraImagenesData->getAllObraImagenes();
     }
 
-    public function deleteCotizacionImagen($obraImagenesId) {
+    public function deleteObraImagenes($obraImagenesId) {
         return $this->ObraImagenesData->deleteObraImagenes($obraImagenesId);
     }
 }
