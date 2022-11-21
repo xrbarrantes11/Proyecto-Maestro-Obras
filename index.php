@@ -11,6 +11,7 @@ error_reporting(0);
 </head>
 <body>
     <h1>Proyecto Maestro de Obras</h1>
+    <h3>Vista Maestro de Obras</h3>
     <a href="./view/EstadoEmpleadoView.php">Activar empleados</a><br>
     <a href="./view/EmpleadoCostoHoraView.php">Agregar horas a empleado</a><br>
     <a href="./view/EmpleadoPagoView.php">Asignar pago semanal empleado</a><br>
@@ -30,6 +31,10 @@ error_reporting(0);
     <a href="./view/EmpleadoTipoEmpleadoPagoRangoView.php">Gestion del rango de pago de un tipo de empleado</a><br>
     <a href="./view/SalarioPeriodoView.php">Gestion de salario por periodo</a><br>
     <a href="./view/PagoPeriodoView.php">Realizar pago a empleado</a><br>
-    <a href="./view/ObraImagenesView.php">Gestion de obra imagenes</a>
+    <a href="./view/ObraImagenesView.php">Gestion de obra imagenes</a><br>
+    <a href="./view/PdfObraRetrasoView.php">Visualizar el retraso de la obra</a><br>
+    <h3>Vista Cliente</h3>
+
+
 </body>
 </html>
