@@ -30,9 +30,9 @@
                     echo '<form method="POST" enctype="multipart/form-data" action="../business/ObraImagenesAction.php">';
                     echo '<td><input readonly type="hidden" name="obraimagenid" id="obraimagenid" value="' . $current->getObraImagenesId() . '"/></td>';
                     echo '<td><input type="text" readonly name="obraid" id="obraid" value="' . $ObrasBusiness->getObra($current->getObraId()) . '"/></td>';             
-                    echo '<td><img src="../cotizacionimages/'.$current->getObraImagenesRuta().'" name="obraimagen[]"  alt="" value="" width="150" height="150"></td>'; 
+                    echo '<td><img src="../obraimagenes/'.$current->getObraImagenesRuta().'" name="obraimagen"  alt="" value="" width="150" height="150"></td>'; 
                     echo '<td><input readonly type="hidden" name="obraimagenid" id="obraimagenid" value="' . $current->getObraImagenesId()  . '"/></td>';
-                    echo '<td><input readonly type="hidden" name="obraimagen[]" value="' . $current->getObraImagenesRuta() . '"/></td>';
+                    echo '<td><input readonly type="hidden" name="obraimagen" value="' . $current->getObraImagenesRuta() . '"/></td>';
                     echo '<td><button type="submit" name="delete" id="delete">Eliminar</button></td>';
                     echo '</tr>';
                     echo '</form>';
