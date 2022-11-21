@@ -8,7 +8,7 @@ if ($_POST['mostrar']) {
         $tbObraId = $_POST['tbobraid'];
         
         
-        header("location: ../fpdf/PdfObraRetraso.php");
+        header("location: ../fpdf/PdfObraRetraso.php?id=$tbObraId");
         
     } 
         
