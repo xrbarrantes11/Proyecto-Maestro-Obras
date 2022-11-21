@@ -40,12 +40,16 @@ if (isset($_GET['id'])) {
 $conn = mysqli_connect("127.0.0.1", "root", "", "bdmaestroobras");
     $conn->set_charset('utf8');
 
-    $consulta = "SELECT tbobranombre, SUM(tbjornadasemanalsumatoriamontosactividades) sumatoria FROM tbobra 
-    INNER JOIN tbobraetapa ON tbobraetapa.tbobraid = ".$idObr." INNER JOIN tbobraetapaempleadotipoasignado ON tbobraetapaempleadotipoasignado.tbobraetapaid = tbobraetapa.tbobraetapaid
-    INNER JOIN tbempleado ON tbempleado.tbempleadoid = tbobraetapaempleadotipoasignado.tbempleadoid
-    INNER JOIN tbjornadasemanal ON tbjornadasemanal.empleadoid = tbobraetapaempleadotipoasignado.tbempleadoid
-    INNER JOIN tbempleadotipoasignado ON tbempleadotipoasignado.tbempleadoid = tbobraetapaempleadotipoasignado.tbempleadoid
-    INNER JOIN tbempleadotipo ON tbempleadotipo.tbempleadotipoid = tbobraetapaempleadotipoasignado.tbempleadotipoid;";
+    $consulta = "SELECT tbobranombre, SUM(tbjornadasemanalsumatoriamontosactividades) sumatoria FROM 
+    tbobra INNER JOIN tbobraetapa ON tbobraetapa.tbobraid = tbobra.tbobraid INNER JOIN 
+    tbobraetapaempleadotipoasignado ON tbobraetapaempleadotipoasignado.tbobraetapaid =
+     tbobraetapa.tbobraetapaid INNER JOIN tbempleado ON tbempleado.tbempleadoid = 
+     tbobraetapaempleadotipoasignado.tbempleadoid INNER JOIN tbjornadasemanal ON 
+     tbjornadasemanal.empleadoid = tbobraetapaempleadotipoasignado.tbempleadoid INNER JOIN 
+     tbempleadotipoasignado ON tbempleadotipoasignado.tbempleadoid = 
+     tbobraetapaempleadotipoasignado.tbempleadoid INNER JOIN tbempleadotipo ON 
+     tbempleadotipo.tbempleadotipoid = tbobraetapaempleadotipoasignado.tbempleadotipoid 
+     WHERE tbobra.tbobraid =  ".$idObr.";";
     $result = mysqli_query($conn, $consulta);
     
     $pdf = new PdfReporteObraPago();
