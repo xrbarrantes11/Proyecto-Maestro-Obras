@@ -13,13 +13,13 @@
 <nav>  
 <ul>  
 <li>  
-<a href="/Proyecto-Maestro-Obras/fpdf/PdfReporteEmpleadoPago.php"> Reporte empleado pago </a>  
+<a href="../fpdf/PdfReporteEmpleadoPago.php"> Reporte empleado pago </a>  
 </li>  
 <li>  
-<a href="/Proyecto-Maestro-Obras/view/PdfObraPagoEmpleadosView.php"> Reporte obra pago </a>  
+<a href="../view/PdfObraPagoEmpleadosView.php"> Reporte obra pago </a>  
 </li>  
 <li>  
-<a href="/Proyecto-Maestro-Obras/view/.php"> Reporte costo por hora total </a>  
+<a href="../view/PdfCostoObraTotalView.php"> Reporte costo por hora total </a>  
 </li>  
 </ul>  
 </nav>  
