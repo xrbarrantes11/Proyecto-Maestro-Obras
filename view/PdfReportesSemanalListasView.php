@@ -16,10 +16,10 @@
 <a href="/Proyecto-Maestro-Obras/fpdf/PdfReporteEmpleadoPago.php"> Reporte empleado pago </a>  
 </li>  
 <li>  
-<a href="/Proyecto-Maestro-Obras/fpdf/PdfReporteObraPago.php"> Reporte obra pago </a>  
+<a href="/Proyecto-Maestro-Obras/view/PdfObraPagoEmpleadosView.php"> Reporte obra pago </a>  
 </li>  
 <li>  
-<a href="/Proyecto-Maestro-Obras/fpdf/View.php"> Reporte costo por hora total </a>  
+<a href="/Proyecto-Maestro-Obras/view/.php"> Reporte costo por hora total </a>  
 </li>  
 </ul>  
 </nav>  

@@ -15,7 +15,7 @@ function Header()
     // Salto de línea
     $this->Ln(20);
     $this->Cell(45,10,'Nombre Obra',1,0,'C',0);
-    $this->Cell(50,10,'Total de Pago a Empleados',1,1,'C',0);
+    $this->Cell(70,10,'Total de Pago a Empleados',1,1,'C',0);
 }
 
 // Pie de página
@@ -31,18 +31,17 @@ function Footer()
 
 
 }
-/*
+
 $idObr = 0;
 if (isset($_GET['id'])) {
     $idObr = $_GET['id'];
-}*/
+}
 
 $conn = mysqli_connect("127.0.0.1", "root", "", "bdmaestroobras");
     $conn->set_charset('utf8');
 
-    $consulta = "SELECT tbobranombre, tbempleadonombre, tbempleadotiponombre, tbjornadasemanalsumatoriamontosactividades FROM tbobraetapa 
-    INNER JOIN tbobra ON tbobra.tbobraid = tbobraetapa.tbobraid 
-    INNER JOIN tbobraetapaempleadotipoasignado ON tbobraetapaempleadotipoasignado.tbobraetapaid = tbobraetapa.tbobraetapaid
+    $consulta = "SELECT tbobranombre, SUM(tbjornadasemanalsumatoriamontosactividades) sumatoria FROM tbobra 
+    INNER JOIN tbobraetapa ON tbobraetapa.tbobraid = ".$idObr." INNER JOIN tbobraetapaempleadotipoasignado ON tbobraetapaempleadotipoasignado.tbobraetapaid = tbobraetapa.tbobraetapaid
     INNER JOIN tbempleado ON tbempleado.tbempleadoid = tbobraetapaempleadotipoasignado.tbempleadoid
     INNER JOIN tbjornadasemanal ON tbjornadasemanal.empleadoid = tbobraetapaempleadotipoasignado.tbempleadoid
     INNER JOIN tbempleadotipoasignado ON tbempleadotipoasignado.tbempleadoid = tbobraetapaempleadotipoasignado.tbempleadoid
@@ -57,7 +56,7 @@ $conn = mysqli_connect("127.0.0.1", "root", "", "bdmaestroobras");
     while($row=$result->fetch_assoc()){
         
         $pdf->Cell(45,10,$row['tbobranombre'],1,0,'C',0);
-        $pdf->Cell(50,10,$row['tbempleadonombre'],1,1,'C',0);
+        $pdf->Cell(70,10,$row['sumatoria'],1,1,'C',0);
 
     }
     

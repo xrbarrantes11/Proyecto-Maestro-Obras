@@ -11,4 +11,13 @@ if ($_POST['mostrar']) {
         
     } 
         
+}else if ($_POST['ver']) {
+
+    if (isset($_POST['tbobraid'])) {
+        $tbObraId1 = $_POST['tbobraid'];
+                
+        header("location: ../fpdf/PdfReporteObraPago.php?id=$tbObraId1");
+        
+    } 
+        
 }
