@@ -13,16 +13,16 @@
 <nav>  
 <ul>  
 <li>  
-<a href="/ProyectoMaestroObras/view/PagoHoraView.php"> Por hora </a>  
+<a href="/Proyecto-Maestro-Obras/view/PagoHoraView.php"> Por hora </a>  
 </li>  
 <li>  
-<a href="/ProyectoMaestroObras/view/PagoDiaView.php"> Por dia </a>  
+<a href="/Proyecto-Maestro-Obras/view/PagoDiaView.php"> Por dia </a>  
 </li>  
 <li>  
-<a href="/ProyectoMaestroObras/view/PagoSemanaView.php"> Por semana </a>  
+<a href="/Proyecto-Maestro-Obras/view/PagoSemanaView.php"> Por semana </a>  
 </li>  
 <li> 
-<a href="/ProyectoMaestroObras/view/PagoTareaView.php"> Por tarea </a>  
+<a href="/Proyecto-Maestro-Obras/view/PagoTareaView.php"> Por tarea </a>  
 </li>    
 </ul>  
 </nav>  
