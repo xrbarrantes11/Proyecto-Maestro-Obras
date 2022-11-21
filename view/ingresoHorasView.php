@@ -28,7 +28,7 @@
     				$formulario .= '<form method="POST" action="../business/EmpleadoCostoHoraAction.php">';
                     
                     $formulario .= '<input type="hidden" name="id" value="'.$id.'">';
-                    $formulario .= '<label>Nombre:</label> <input type="text" name="empleadonombre" value="'. $nombre.'">';
+                    $formulario .= '<label>Nombre:</label> <input type="text" name="" value="'. $nombre.'">';
 				 	$formulario .= '<label>Fecha:</label> <input type="date" max="'. $fechaActual.'" id="fechaactual" name="fechaactual" value="'. $fechaActual.'">';
 				 	$formulario .= '<label>Hora Inicio:</label> <input type="time" class="horainicio" name="horainicio">';
 				 	$formulario .= '<label>Hora Final:</label> <input  readonly  type="time" class="horafinal" name="horafinal" >';
@@ -52,7 +52,7 @@
 	 			$formulario .= '<form method="POST" action="../business/EmpleadoCostoHoraAction.php">';
                     
                     $formulario .= '<input type="hidden" name="id" value="'.$id.'">';
-                    $formulario .= '<label>Nombre:</label> <input type="text" name="empleadonombre" value="'. $nombre.'">';
+                    $formulario .= '<label>Nombre:</label> <input type="text" name="" value="'. $nombre.'">';
 				 	$formulario .= '<label>Fecha:</label> <input type="date" max="'. $fechaActual.'" id="fechaactual" name="fechaactual" value="'. $fechaActual.'">';
 				 	$formulario .= '<label>Hora Inicio:</label> <input readonly type="time" class="horainicio" name="horainicio">';
 				 	$formulario .= '<label>Hora Final:</label> <input  readonly  type="time" class="horafinal" name="horafinal" >';

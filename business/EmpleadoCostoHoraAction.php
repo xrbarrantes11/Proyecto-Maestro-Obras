@@ -86,12 +86,12 @@ if (isset($_POST['update'])) {
               
 }else if(isset($_POST['insertarHoras'])){
     echo '<br>';
-    $name = $_POST['empleadonombre'];
+    //$name = $_POST['empleadonombre'];
     $fech = $_POST['fechaactual'];
     $ids = $_POST['id'];
     $hI = $_POST['horainicio'];
     
-    $emple = new EmpleadoCostoHora($ids,$name,$fech,$hI,"", 0);
+    $emple = new EmpleadoCostoHora($ids,$fech,$hI,"", 0);
     $EmpleadoCostoHoraBusiness = new EmpleadoCostoHoraBusiness();
     $result = $EmpleadoCostoHoraBusiness->insertEmpleadoCostoHora($emple);
     
@@ -103,13 +103,13 @@ if (isset($_POST['update'])) {
 
 }else if(isset($_POST['actualizarHoras'])){
 
-    $name = $_POST['empleadonombre'];
+    
     $fech = $_POST['fechaactual'];
     $ids = $_POST['id'];
     $hI = $_POST['horainicio'];
     $hF = $_POST['horafinal'];
 
-    $emplea = new EmpleadoCostoHora($ids,"",$fech,$hI,$hF,1);
+    $emplea = new EmpleadoCostoHora($ids,$fech,$hI,$hF,1);
     $EmpleadoCostoHoraBusiness = new EmpleadoCostoHoraBusiness();
     $result = $EmpleadoCostoHoraBusiness->updateEmpleadoCostoHora($emplea);
     
@@ -133,7 +133,6 @@ if (isset($_POST['update'])) {
 
             $array = [
                 'empleadoid'=>$hora->getEmpleadoId(),
-                'empleadonombre'=>$hora->getEmpleadoNombre(),
                 'fechaactual'=>$hora->getEmpleadoFechaActual(),
                 'horanicio'=>$hora->getEmpleadoHoraInicio(),
                 'horafin'=>$hora->getEmpleadoHoraFin(),

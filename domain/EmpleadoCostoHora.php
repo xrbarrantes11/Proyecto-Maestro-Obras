@@ -3,16 +3,15 @@
 class EmpleadoCostoHora{
 
     private $empleadoId;
-    private $empleadoNombre;
+    
     private $empleadoFechaActual;
     private $empleadoHoraInicio;
     private $empleadoHoraFin;
     private $empleadoEstado;
     
 
-    function EmpleadoCostoHora($empleadoId, $empleadoNombre,$empleadoFechaActual,$empleadoHoraInicio,$empleadoHoraFin,$empleadoEstado) {
+    function EmpleadoCostoHora($empleadoId,$empleadoFechaActual,$empleadoHoraInicio,$empleadoHoraFin,$empleadoEstado) {
         $this->empleadoId = $empleadoId;
-        $this->empleadoNombre = $empleadoNombre;
         $this->empleadoFechaActual = $empleadoFechaActual;
         $this->empleadoHoraInicio = $empleadoHoraInicio;
         $this->empleadoHoraFin = $empleadoHoraFin;
@@ -23,10 +22,7 @@ class EmpleadoCostoHora{
         return $this->empleadoId;
     }
 
-    function getEmpleadoNombre() {
-        return $this->empleadoNombre;
-    }
-
+   
 
     function getEmpleadoFechaActual() {
         return $this->empleadoFechaActual;
@@ -48,10 +44,7 @@ class EmpleadoCostoHora{
         $this->empleadoId = $empleadoId;
     }
 
-    function setEmpleadoNombre($empleadoNombre) {
-        $this->empleadoNombre = $empleadoNombre;
-    }
-
+   
     function setEmpleadoFechaActual($empleadoFechaActual) {
         $this->empleadoFechaActual = $empleadoFechaActual;
     }

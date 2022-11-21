@@ -63,7 +63,7 @@ class EmpleadoCostoHoraData extends Data{
         $resultado = mysqli_query($conn, $consulta);
         $datos = $row = mysqli_fetch_array($resultado);
         $hora = array();
-        $hora = new EmpleadoCostoHora($datos['tbempleadoid'],$datos['tbempleadonombre'],$datos['tbempleadofechaactual'],$datos['tbempleadohorainicio'],$datos['tbempleadohorafin'],$datos['tbempleadoestado']);
+        $hora = new EmpleadoCostoHora($datos['tbempleadoid'],$datos['tbempleadofechaactual'],$datos['tbempleadohorainicio'],$datos['tbempleadohorafin'],$datos['tbempleadoestado']);
 
         return $hora;
 
@@ -87,9 +87,9 @@ class EmpleadoCostoHoraData extends Data{
         }
 
         echo $queryInsert = "INSERT INTO tbempleadocostohora (`tbcostohoraid`, `tbempleadoid`, 
-        `tbempleadonombre`, `tbempleadofechaactual`, `tbempleadohorainicio`)
+    `tbempleadofechaactual`, `tbempleadohorainicio`)
         VALUES (" . $nextId . "," . $EmpleadoCostoHora->getEmpleadoId() . ",'" .
-        $EmpleadoCostoHora->getEmpleadoNombre() . "','" .
+      
         $EmpleadoCostoHora->getEmpleadoFechaActual() . "','" .
         $EmpleadoCostoHora->getEmpleadoHoraInicio() . "');";
         echo $result = mysqli_query($conn, $queryInsert);
@@ -125,7 +125,7 @@ class EmpleadoCostoHoraData extends Data{
         mysqli_close($conn);
         $Empleado = [];
         while ($row = mysqli_fetch_array($result)) {
-            $currentEmpleado= new EmpleadoCostoHora($row['tbempleadoid'], $row['tbempleadonombre'], $row['tbempleadocanthoras'], $row['tbempleadofechainicio'], $row['tbempleadofechafin'], $row['tbempleadosalario']);
+            $currentEmpleado= new EmpleadoCostoHora($row['tbempleadoid'], $row['tbempleadocanthoras'], $row['tbempleadofechainicio'], $row['tbempleadofechafin'], $row['tbempleadosalario']);
             array_push($Empleado, $currentEmpleado);
         }
         return $Empleado;
