@@ -14,12 +14,21 @@ if(isset($_POST['create'])){
             $tipoArchivo = $_FILES["obraimagen"]["type"][$key];
             $tmpArchivo = $_FILES["obraimagen"]["tmp_name"][$key];
             $directorio = "../obraimagenes/";
+            if($tipoArchivo == "image/png"){
+                $tipoArchivo = "png";
+            }else
+            if($tipoArchivo == "image/jpeg"){
+                $tipoArchivo = "jpeg";
+            }else
+            if($tipoArchivo == "application/pdf"){
+                $tipoArchivo = "pdf";
+            }
             $nombre = $obraimagenId."-".$obraId;
 
             move_uploaded_file($tmpArchivo, "../obraimagenes/".$nombreArchivo);
             rename($directorio.$nombreArchivo, $directorio.$nombre.".".$tipoArchivo);
             $ruta = $directorio.$nombre.".".$tipoArchivo;
-            $ObraImagen = new ObraImagenes(0, $obraId, $directorio.$ruta);
+            $ObraImagen = new ObraImagenes(0, $obraId, $ruta);
             $ObraImagenBusiness = new ObraImagenesBusiness();
             $result = $ObraImagenBusiness->insertObraImagenes($ObraImagen);
 
