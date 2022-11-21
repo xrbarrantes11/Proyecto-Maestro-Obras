@@ -33,6 +33,7 @@ function Footer()
 
 
 }
+
 $idObr = 0;
 if (isset($_GET['id'])) {
     $idObr = $_GET['id'];

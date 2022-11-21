@@ -33,7 +33,8 @@ error_reporting(0);
     <a href="./view/PagoPeriodoView.php">Realizar pago a empleado</a><br>
     <a href="./view/ObraImagenesView.php">Gestion de obra imagenes</a><br>
     <a href="./view/PdfObraRetrasoView.php">Visualizar el retraso de la obra</a><br>
-    <h3>Vista Cliente</h3>
+    <a href="./view/PdfReportesSemanalListasView.php">Generar reporte semanal</a><br>
+    <h3>Vista Clientes</h3>
 
 
 </body>
