@@ -13,7 +13,7 @@
 <nav>  
 <ul>  
 <li>  
-<a href="/Proyecto-Maestro-Obras/view/View.php"> Reporte empleado pago </a>  
+<a href="/Proyecto-Maestro-Obras/fpdf/PdfReporteEmpleadoPago.php"> Reporte empleado pago </a>  
 </li>  
 <li>  
 <a href="/Proyecto-Maestro-Obras/view/View.php"> Reporte obra pago </a>  
