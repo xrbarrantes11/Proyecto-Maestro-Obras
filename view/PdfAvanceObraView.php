@@ -6,7 +6,7 @@
     <script src="../js/Function.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obras Retrasos</title>
+    <title>Avance Obras</title>
     <?php
     include '../business/ObrasBusiness.php';
 
@@ -29,7 +29,7 @@
                     <option value="<?php echo $id ?>"><?php echo $name ?></option>
                 <?php } ?>
             </select></td>
-            <input type="submit" value="Generar PDF" name="mostrar" id="mostrar" /></td>
+            <input type="submit" value="Generar PDF" name="analizar" id="analizar" /></td>
         </tr>
     </form>
     <br><br>

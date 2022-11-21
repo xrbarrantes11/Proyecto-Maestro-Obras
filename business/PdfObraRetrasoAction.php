@@ -29,4 +29,13 @@ if ($_POST['mostrar']) {
         
     } 
         
+}else if ($_POST['analizar']) {
+
+    if (isset($_POST['tbobraid'])) {
+        $tbObraId3 = $_POST['tbobraid'];
+                
+        header("location: ../fpdf/PdfReporteAvanceObra.php?id=$tbObraId3");
+        
+    } 
+        
 }

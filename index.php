@@ -35,7 +35,7 @@ error_reporting(0);
     <a href="./view/PdfObraRetrasoView.php">Visualizar el retraso de la obra</a><br>
     <a href="./view/PdfReportesSemanalListasView.php">Generar reporte semanal</a><br>
     <h3>Vista Clientes</h3>
-    <a href="./fpdf/PdfReporteAvanceObra.php">Consultar avance de la Obra</a><br>
+    <a href="./view/PdfAvanceObraView.php">Consultar avance de la Obra</a><br>
 
 
 </body>
