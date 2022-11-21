@@ -30,26 +30,27 @@ function Footer()
     // Número de página
     $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
 }
-}
 
+}
+$conn = mysqli_connect("127.0.0.1", "root", "", "bdmaestroobras");
+    $conn->set_charset('utf8');
+
+    $consulta = "SELECT tbobradiasfinalizacionatrasado, tbobraganancia, tbobraperdida FROM tbobra WHERE tbobraid=".$obraId.";";
+    $result = mysqli_query($conn, $consulta);
+    
+    $pdf = new PdfObraRetraso();
+    $pdf->AliasNbPages();
+    $pdf->AddPage();
+    $pdf->SetFont('Arial','B',12);
+    
+    while($row=$result->fetch_assoc()){
+        $pdf->Cell(60,10,$row['tbobradiasfinalizacionatrasado'],1,0,'C',0);
+        $pdf->Cell(60,10,$row['tbobraganancia'],1,0,'C',0);
+        $pdf->Cell(60,10,$row['tbobraperdida'],1,1,'C',0);
+    }
+    
+    $pdf->Output();
 // Creación del objeto de la clase heredada
 //include '../data/data.php';
-$conn = mysqli_connect("127.0.0.1", "root", "", "bdmaestroobras");
-$conn->set_charset('utf8');
 
-$consulta = "SELECT tbobradiasfinalizacionatrasado, tbobraganancia, tbobraperdida FROM tbobra;";
-$result = mysqli_query($conn, $consulta);
-
-$pdf = new PdfObraRetraso();
-$pdf->AliasNbPages();
-$pdf->AddPage();
-$pdf->SetFont('Arial','B',12);
-
-while($row=$result->fetch_assoc()){
-    $pdf->Cell(60,10,$row['tbobradiasfinalizacionatrasado'],1,0,'C',0);
-    $pdf->Cell(60,10,$row['tbobraganancia'],1,0,'C',0);
-    $pdf->Cell(60,10,$row['tbobraperdida'],1,1,'C',0);
-}
-
-$pdf->Output();
 ?>
