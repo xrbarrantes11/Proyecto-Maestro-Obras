@@ -51,6 +51,8 @@
             if (isset($_GET['error'])) {
                 if ($_GET['error'] == "dbError") {
                     echo '<center><p style="color: red">Error al procesar la transacción</p></center>';
+                }else if ($_GET['error'] == "empty") {
+                    echo '<p style="color: red">El empleado seleccionado no se encuentra registrado con el tipo seleccionado!</p></center>';
                 }
             } else if (isset($_GET['success'])) {
                 echo '<p style="color: green">Transacción realizada</p>';
