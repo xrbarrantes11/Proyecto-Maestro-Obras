@@ -148,5 +148,19 @@ class ObrasData extends Data {
         mysqli_close($conn);
         return $result;
     }
+    public function buscarTipoAsignadoCliente($obraNombre, $clienteId) {
+        $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
+        $conn->set_charset('utf8');
+        $querySelect = "SELECT * FROM tbobra WHERE tbobraid = ". $obraNombre .";";
+        $result = mysqli_query($conn, $querySelect);
+        mysqli_close($conn);
+        $busqueda = false;
+        while ($row = mysqli_fetch_array($result)) {
+            if($clienteId == $row['tbclienteid']){
+            $busqueda = true;
+            }
+        }
+        return $busqueda;
+    }
 
 }

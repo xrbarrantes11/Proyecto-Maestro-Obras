@@ -42,4 +42,7 @@ class ObrasBusiness {
         return $this->ObrasData->finalizarObra($ObraId);
     }
  
+    public function buscarTipoAsignadoCliente($obraId, $clienteId) {
+        return $this->ObrasData->buscarTipoAsignadoCliente($obraId, $clienteId);
+    }
 }

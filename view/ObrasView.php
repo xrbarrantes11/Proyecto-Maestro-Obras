@@ -60,6 +60,57 @@ error_reporting(0);
 
         <table>
             <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Cliente</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Entrega</th>
+                <th>Fecha Estimada Finalización</th>
+                <th>Costo Estimado</th>
+                <th>Costo Finalizado</th>
+                <th>Días de Finalización Anticipada</th>
+                <th>Días de Finalización Atrasada</th>
+                <th>Ganancia</th>
+                <th>Perdida</th>
+                <th>Días Estimados de Obra</th>
+                <th>Estado de la Obra</th>
+            </tr>
+            <tbody id=buscarObra>
+                <?php
+                $ClienteBusiness = new ClienteBusiness();
+                $ObrasBusiness = new ObrasBusiness();
+                $allObra = $ObrasBusiness->getAllObra();
+                foreach ($allObra as $current) {
+                    echo '<form method="post" enctype="multipart/form-data" action="../business/ObrasAction.php">';
+                    echo '<input type="hidden" name="tbobraid" value="' . $current->getObraId() . '">';
+                    echo '<td><input type="text" name="tbobranombre" id="tbobranombre" value="' . $current->getObraNombre() . '"/></td>';
+                    echo '<td style="display:none">' . $current->getObraNombre() . '</td>';
+                    echo '<td><input type="text" name="tbobradescripcion" id="tbobradescripcion" value="' . $current->getObraDescripcion() . '"/></td>';
+                    echo '<td><input readonly type="text" name="tbclienteid" id="tbclienteid" value="' . $ClienteBusiness->getClienteId($current->getClienteId()) . '"/></td>';
+                    echo '<td><input type="date" name="tbobrafechainicio" id="tbobrafechainicio" value="' . $current->getObraFechaInicio() . '"/></td>';
+                    echo '<td><input type="date" name="tbobrafechaentrega" id="tbobrafechaentrega" value="' . $current->getObraFechaEntrega() . '"/></td>';
+                    echo '<td><input type="date" name="tbobrafechaestimadofinalizacion" id="tbobrafechaestimadofinalizacion" value="' . $current->getObraFechaEstimadaFinalizacion() . '"/></td>';
+                    echo '<td><input type="text" data-mask  ="₡ #.##0,00" name="tbobracostoestimado" id="tbobracostoestimado" value="₡ ' . $current->getObraCostoEstimado() . '"/></td>';
+                    echo '<td><input type="text" data-mask  ="₡ #.##0,00" name="tbobracostofinalizado" id="tbobracostofinalizado" value="₡ ' . $current->getObraCostoFinalizado() . '"/></td>';
+                    echo '<td><input type="text" name="tbobradiasfinalizacionanticipada" id="tbobradiasfinalizacionanticipada" value="' . $current->getObraDiasFinalizacionAnticipada() . '"/></td>';
+                    echo '<td><input type="text" name="tbobradiasfinalizacionatrasado" id="tbobradiasfinalizacionatrasado" value="' . $current->getObraDiasFinalizacionAtrasado() . '"/></td>';
+                    echo '<td><input type="text" data-mask  ="₡ #.##0,00" name="tbobraganancia" id="tbobraganancia" value="₡ ' . $current->getObraGanancia() . '"/></td>';
+                    echo '<td><input type="text" data-mask  ="₡ #.##0,00" name="tbobraperdida" id="tbobraperdida" value="₡ ' . $current->getObraPerdida() . '"/></td>';
+                    echo '<td><input type="text" name="tbobradiasestimadoobra" id="tbobradiasestimadoobra" value="' . $current->getObraDiasEstimadoObra() . '"/></td>';
+                    if($current->getObraFinalizada() == 1){
+                    echo '<td><input type="text" readonly name="tbobrafinalizada" id="tbobrafinalizada" value="Finalizada"/></td>';
+                    }else{
+                    echo '<td><input type="text" readonly name="tbobrafinalizada" id="tbobrafinalizada" value="Pendiente"/></td>';
+                    }
+                    echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
+                    echo '<td><button onclick="eliminarObra(' . $current->getObraId() . ')">Eliminar</button></td>';
+                    echo '<td><input type="hidden" name="tbcliente" id="tbcliente" value="' . $current->getClienteId() . '"/></td>';
+                    echo '</tr>';
+                    echo '</form>';
+                }
+                ?>
+        <table>
+            <tr>
                 <th></th>
                 <th>Nombre</th>
                 <th>Descripción</th>
@@ -163,58 +214,6 @@ error_reporting(0);
                 </tr>
             </form>
         </table>
-       
-        <table>
-            <tr>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Cliente</th>
-                <th>Fecha de Inicio</th>
-                <th>Fecha de Entrega</th>
-                <th>Fecha Estimada Finalización</th>
-                <th>Costo Estimado</th>
-                <th>Costo Finalizado</th>
-                <th>Días de Finalización Anticipada</th>
-                <th>Días de Finalización Atrasada</th>
-                <th>Ganancia</th>
-                <th>Perdida</th>
-                <th>Días Estimados de Obra</th>
-                <th>Estado de la Obra</th>
-            </tr>
-            <tbody id=buscarObra>
-                <?php
-                $ClienteBusiness = new ClienteBusiness();
-                $ObrasBusiness = new ObrasBusiness();
-                $allObra = $ObrasBusiness->getAllObra();
-                foreach ($allObra as $current) {
-                    echo '<form method="post" enctype="multipart/form-data" action="../business/ObrasAction.php">';
-                    echo '<input type="hidden" name="tbobraid" value="' . $current->getObraId() . '">';
-                    echo '<td><input type="text" name="tbobranombre" id="tbobranombre" value="' . $current->getObraNombre() . '"/></td>';
-                    echo '<td style="display:none">' . $current->getObraNombre() . '</td>';
-                    echo '<td><input type="text" name="tbobradescripcion" id="tbobradescripcion" value="' . $current->getObraDescripcion() . '"/></td>';
-                    echo '<td><input readonly type="text" name="tbclienteid" id="tbclienteid" value="' . $ClienteBusiness->getClienteId($current->getClienteId()) . '"/></td>';
-                    echo '<td><input type="date" name="tbobrafechainicio" id="tbobrafechainicio" value="' . $current->getObraFechaInicio() . '"/></td>';
-                    echo '<td><input type="date" name="tbobrafechaentrega" id="tbobrafechaentrega" value="' . $current->getObraFechaEntrega() . '"/></td>';
-                    echo '<td><input type="date" name="tbobrafechaestimadofinalizacion" id="tbobrafechaestimadofinalizacion" value="' . $current->getObraFechaEstimadaFinalizacion() . '"/></td>';
-                    echo '<td><input type="text" data-mask  ="₡ #.##0,00" name="tbobracostoestimado" id="tbobracostoestimado" value="₡ ' . $current->getObraCostoEstimado() . '"/></td>';
-                    echo '<td><input type="text" data-mask  ="₡ #.##0,00" name="tbobracostofinalizado" id="tbobracostofinalizado" value="₡ ' . $current->getObraCostoFinalizado() . '"/></td>';
-                    echo '<td><input type="text" name="tbobradiasfinalizacionanticipada" id="tbobradiasfinalizacionanticipada" value="' . $current->getObraDiasFinalizacionAnticipada() . '"/></td>';
-                    echo '<td><input type="text" name="tbobradiasfinalizacionatrasado" id="tbobradiasfinalizacionatrasado" value="' . $current->getObraDiasFinalizacionAtrasado() . '"/></td>';
-                    echo '<td><input type="text" data-mask  ="₡ #.##0,00" name="tbobraganancia" id="tbobraganancia" value="₡ ' . $current->getObraGanancia() . '"/></td>';
-                    echo '<td><input type="text" data-mask  ="₡ #.##0,00" name="tbobraperdida" id="tbobraperdida" value="₡ ' . $current->getObraPerdida() . '"/></td>';
-                    echo '<td><input type="text" name="tbobradiasestimadoobra" id="tbobradiasestimadoobra" value="' . $current->getObraDiasEstimadoObra() . '"/></td>';
-                    if($current->getObraFinalizada() == 1){
-                    echo '<td><input type="text" readonly name="tbobrafinalizada" id="tbobrafinalizada" value="Finalizada"/></td>';
-                    }else{
-                    echo '<td><input type="text" readonly name="tbobrafinalizada" id="tbobrafinalizada" value="Pendiente"/></td>';
-                    }
-                    echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
-                    echo '<td><button onclick="eliminarObra(' . $current->getObraId() . ')">Eliminar</button></td>';
-                    echo '<td><input type="hidden" name="tbcliente" id="tbcliente" value="' . $current->getClienteId() . '"/></td>';
-                    echo '</tr>';
-                    echo '</form>';
-                }
-                ?>
                 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
                 <script type="text/javascript">
                     $(document).ready(function() {
