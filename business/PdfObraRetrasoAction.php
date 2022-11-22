@@ -34,10 +34,8 @@ if ($_POST['mostrar']) {
         if ($ObrasBusiness->buscarTipoAsignadoCliente($tbObraId3, $clienteId) == true) {
             $result = header("location: ../fpdf/PdfReporteAvanceObra.php?id=$tbObraId3");
         }
-        if ($result == 1) {
             if ($ObrasBusiness->buscarTipoAsignadoCliente($tbObraId3, $clienteId) == false) {
                 $result= header("location: ../view/PdfAvanceObraView.php?error=empty");
             }
-        }
     }
 }
