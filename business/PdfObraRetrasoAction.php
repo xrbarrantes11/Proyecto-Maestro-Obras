@@ -1,7 +1,7 @@
 <?php
 
 include '../fpdf/PdfObraRetraso.php';
-include './business/ObrasBusiness.php';
+include './ObrasBusiness.php';
 
 if ($_POST['mostrar']) {
 
@@ -26,10 +26,12 @@ if ($_POST['mostrar']) {
     }
 } else if ($_POST['analizar']) {
 
-    if (isset($_POST['tbobraid'])) {
-        $tbObraId3 = $_POST['tbobraid'];
-    
+    if (isset($_POST['tbobraid']) && isset($_POST['tbclienteid'])) {
         $ObrasBusiness = new ObrasBusiness();
+        $tbObraId3 = $_POST['tbobraid'];
+        $clienteId = $_POST['tbclienteid'];
+    
+       
         $result = 0;
         if ($ObrasBusiness->buscarTipoAsignadoCliente($tbObraId3, $clienteId) == true) {
             $result = header("location: ../fpdf/PdfReporteAvanceObra.php?id=$tbObraId3");
