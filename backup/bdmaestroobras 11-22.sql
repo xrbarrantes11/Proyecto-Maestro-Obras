@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2022 a las 10:15:32
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 7.4.28
+-- Tiempo de generación: 22-11-2022 a las 07:24:44
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -180,7 +180,7 @@ CREATE TABLE `tbempleadotipo` (
 
 INSERT INTO `tbempleadotipo` (`tbempleadotipoid`, `tbempleadotiponombre`, `tbempleadotipodescripcion`, `tbempleadotipoactivo`, `tbempleadotiposalariobase`) VALUES
 (1, 'Electricista', 'Encargado del cableado electrico', 1, 25000),
-(2, 'Carguero', ' Encargado de la carga de material', 1, 11000),
+(2, 'Carguero', 'Encargado de la carga de material', 1, 11000),
 (3, 'Peon', 'Encargado de ayudar', 1, 100000),
 (4, 'Albanil', 'Encargado de ayudar', 1, 100000);
 
@@ -402,7 +402,7 @@ CREATE TABLE `tbobraimagenes` (
 --
 
 INSERT INTO `tbobraimagenes` (`tbobraimagenesid`, `tbobraid`, `tbobraimagenesruta`) VALUES
-(1, 1, '../obraimagenes/../obraimagenes/1-1.image/jpeg');
+(2, 1, '../obraimagenes/1-1.png');
 
 -- --------------------------------------------------------
 
