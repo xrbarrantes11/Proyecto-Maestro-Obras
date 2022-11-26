@@ -16,6 +16,7 @@ error_reporting(0);
     <a href="./view/EmpleadoCostoHoraView.php">Agregar horas a empleado</a><br>
     <a href="./view/EmpleadoPagoView.php">Asignar pago semanal empleado</a><br>
     <a href="./view/ObraEtapaEmpleadoAsignadoView.php">Asignar empleados a etapa de obra</a><br>
+    <a href="./view/AsignarTipoEmpleadoView.php">Asignar tipo de empleado a empleados</a><br>
     <a href="./view/CronogramaPagoView.php">Cronograma pago empleados</a><br>
     <a href="./view/ObraFinalizarView.php">Finalizar Obras</a><br>
     <a href="./view/EmpleadoView.php">Gestion de empleados</a><br>

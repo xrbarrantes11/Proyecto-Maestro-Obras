@@ -116,3 +116,12 @@ if (isset($_POST['update'])) {
         header("location: ../view/EmpleadoTipoView.php?error=error&var1=$empleadoTipoNombre&var2=$empleadoTipoDescripcion&var3=$empleadoTipoActivo&var4=$empleadoTipoSalarioBase");
     }
 }
+
+if ($_POST['cargar']) {
+    if (isset($_POST['tbempleadoid'])) {
+        $tbEmpleadoId = $_POST['tbempleadoid'];
+        header("location: ../view/AsignarTipoEmpleadoView.php?id=$tbEmpleadoId");
+    } else {
+        header("location: ../view/AsignarTipoEmpleadoView.php?error=error");
+    }
+}

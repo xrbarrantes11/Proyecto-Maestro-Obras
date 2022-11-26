@@ -3,14 +3,14 @@
 include './ObraEtapaBusiness.php';
 
 if (isset($_POST['actualizar'])) {
-    if (
+    if ( 
         isset($_POST['tbobraetapaid']) && isset($_POST['tbobra']) && isset($_POST['tbobraetapanombre']) && isset($_POST['tbobraetapadescricion'])
         && isset($_POST['tbobraetapaduracionaproximada'])
     ) {
         $tbObraEtapaId = $_POST['tbobraetapaid'];
         $tbObraId =  $_POST['tbobra'];
         echo $tbObraId;
-        $tbObraEtapaNombre = $_POST['tbobraetapanombre'];
+        $tbObraEtapaNombre = str_replace(' ', 'OOO',$_POST['tbobraetapanombre']);
         $tbObraEtapaDescripcion = $_POST['tbobraetapadescricion'];
         $tbObraEtapaDuracionAproximada = $_POST['tbobraetapaduracionaproximada'];
 
@@ -19,6 +19,7 @@ if (isset($_POST['actualizar'])) {
             && strlen($tbObraEtapaDuracionAproximada) > 0
         ) {
             if (!is_numeric($tbObraEtapaNombre) && ctype_alpha($tbObraEtapaNombre)) {
+                $tbObraEtapaNombre = str_replace('OOO', ' ',$_POST['tbobraetapanombre']);
                 $ObraEtapa = new ObraEtapa($tbObraEtapaId, $tbObraId, $tbObraEtapaNombre, $tbObraEtapaDescripcion, $tbObraEtapaDuracionAproximada);
 
                 $ObraEtapaBusiness = new ObraEtapaBusiness();
@@ -63,7 +64,7 @@ if (isset($_POST['actualizar'])) {
     ) {
         $tbObraEtapaId = $_POST['tbobraetapaid'];
         $tbObraId =  $_POST['tbobraid'];
-        $tbObraEtapaNombre = $_POST['tbobraetapanombre'];
+        $tbObraEtapaNombre = str_replace(' ', 'OOO',$_POST['tbobraetapanombre']);
         $tbObraEtapaDescripcion = $_POST['tbobraetapadescricion'];
         $tbObraEtapaDuracionAproximada = $_POST['tbobraetapaduracionaproximada'];
 
@@ -74,7 +75,7 @@ if (isset($_POST['actualizar'])) {
         ) {
 
             if (!is_numeric($tbObraEtapaNombre) && ctype_alpha($tbObraEtapaNombre)) {
-
+                $tbObraEtapaNombre = str_replace('OOO', ' ',$_POST['tbobraetapanombre']);
                 $ObraEtapa = new ObraEtapa(0, $tbObraId, $tbObraEtapaNombre, $tbObraEtapaDescripcion, $tbObraEtapaDuracionAproximada);
 
                 $ObraEtapaBusiness = new ObraEtapaBusiness();

@@ -18,12 +18,20 @@ class EmpleadoTipoAsignadoBusiness {
         return $this->EmpleadoTipoAsignadoData->getAllEmpleadoTipoAsignado($empleadoId);
     }
 
+    public function getAllEmpleadoTipoAsignados($empleadoId) {
+        return $this->EmpleadoTipoAsignadoData->getAllEmpleadoTipoAsignados($empleadoId);
+    }
+
     public function getEmpleadoTipoAsignado($empleadoId) {
         return $this->EmpleadoTipoAsignadoData->getEmpleadoTipoAsignado($empleadoId);
     }
 
     public function deleteAllEmpleadoTipoAsignado($empleadoId) {
         return $this->EmpleadoTipoAsignadoData->deleteAllEmpleadoTipoAsignado($empleadoId);
+    }
+
+    public function deleteEmpleadoTipoAsignado($empleadoTipoId,$empleadoId) {
+        return $this->EmpleadoTipoAsignadoData->deleteEmpleadoTipoAsignado($empleadoTipoId,$empleadoId,);
     }
 
     public function getTipoAsignado($empleadoTipoId) {
