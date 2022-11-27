@@ -4,7 +4,7 @@ include '../domain/ObraEtapa.php';
 
 class ObraEtapaData extends Data {
 
-    public function insertObraEtapa($ObraEtapa) {
+    public function insertObraEtapa($ObraEtapa, $idObra) {
         $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
         $conn->set_charset('utf8');
 
@@ -16,8 +16,7 @@ class ObraEtapaData extends Data {
         if ($row = mysqli_fetch_row($idCont)) {
             $nextId = trim($row[0]) + 1;
         }
-        $queryInsert = "INSERT INTO tbobraetapa VALUES (" . $nextId . ",'" .
-                $ObraEtapa->getObraId() . "','" .
+        $queryInsert = "INSERT INTO tbobraetapa VALUES (" . $nextId . ",'" . $idObra . "','" .
                 $ObraEtapa->getObraEtapaNombre() . "','" .
                 $ObraEtapa->getObraEtapaDescripcion() . "','" .
                 $ObraEtapa->getObraEtapaDuracionAproximada() . "');";
@@ -52,11 +51,11 @@ class ObraEtapaData extends Data {
         return $result;
     }
 
-    public function getAllObraEtapa() {
+    public function getAllObraEtapa($idObra) {
         $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
         $conn->set_charset('utf8');
 
-        $querySelect = "SELECT * FROM tbobraetapa;";
+        $querySelect = "SELECT * FROM tbobraetapa WHERE tbobraid IN (SELECT tbobraid FROM tbobra WHERE tbobraid = '". $idObra ."');";
         $result = mysqli_query($conn, $querySelect);
         mysqli_close($conn);
         $ObraEtapa = [];

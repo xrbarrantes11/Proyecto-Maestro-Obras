@@ -10,8 +10,8 @@ class ObraEtapaBusiness {
         $this->ObraEtapaData = new ObraEtapaData();
     }
 
-    public function insertObraEtapa($ObraEtapa) {
-        return $this->ObraEtapaData->insertObraEtapa($ObraEtapa);
+    public function insertObraEtapa($ObraEtapa, $idObra) {
+        return $this->ObraEtapaData->insertObraEtapa($ObraEtapa, $idObra);
     }
 
     public function updateObraEtapa($ObraEtapa) {
@@ -27,7 +27,7 @@ class ObraEtapaBusiness {
         return $this->ObraEtapaData->getNombreEtapa($obraEtapaId) ;
     }
 
-    public function getAllObraEtapa() {
-        return $this->ObraEtapaData->getAllObraEtapa();
+    public function getAllObraEtapa($idObra) {
+        return $this->ObraEtapaData->getAllObraEtapa($idObra);
     }
 }

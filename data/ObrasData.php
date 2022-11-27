@@ -163,4 +163,18 @@ class ObrasData extends Data {
         return $busqueda;
     }
 
+    public function getNombreCliente($idObra) {
+        $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
+        $conn->set_charset('utf8');
+
+        $querySelect = "SELECT tbclientenombre FROM tbcliente WHERE tbclienteid IN (SELECT tbclienteid FROM tbobra WHERE tbobraid = '". $idObra ."');";
+        $result = mysqli_query($conn, $querySelect);
+        mysqli_close($conn);
+        $nombreCliente = "";
+        while ($row = mysqli_fetch_array($result)) {
+            $nombreCliente = $row['tbclientenombre'];
+        }
+        return $nombreCliente;
+    }
+
 }

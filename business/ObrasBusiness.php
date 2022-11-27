@@ -45,4 +45,8 @@ class ObrasBusiness {
     public function buscarTipoAsignadoCliente($obraId, $clienteId) {
         return $this->ObrasData->buscarTipoAsignadoCliente($obraId, $clienteId);
     }
+
+    public function getNombreCliente($idObra) {
+        return $this->ObrasData->getNombreCliente($idObra);
+    }
 }
