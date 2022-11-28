@@ -17,7 +17,7 @@
     <h2>Lista de Obras</h2>
     <form method="post" enctype="multipart/form-data" action="../business/PdfObraRetrasoAction.php">
         <tr>
-            <select name="tbobraid" id="">
+            <select name="tbobraid" required id="">
                 <option value="">Obras</option>
                 <?php
                 $ObrasBusiness = new ObrasBusiness();
