@@ -65,7 +65,7 @@
                                 <?php
                                 $ObraEtapaBusiness = new ObraEtapaBusiness();
                                 $ObrasBusiness = new ObrasBusiness();
-                                $obraEtapa = $ObraEtapaBusiness->getAllObraEtapa();
+                                $obraEtapa = $ObraEtapaBusiness->getAllObraEtapa(1);
                                 foreach ($obraEtapa as $tipo) { ?>
                                     <option value="<?php echo $tipo->getObraId() ?>"><?php echo $ObrasBusiness->getNombreObras($tipo->getObraId()) ?> - <?php echo $tipo->getObraEtapaNombre() ?></option>
                                 <?php } ?>
