@@ -111,6 +111,24 @@ class ObraEtapaMaterialesData extends Data {
         }
         return $busqueda;
     }
+
+
+
+    public function getAllObraEtapaMateriales2($idObra) {
+        $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
+        $conn->set_charset('utf8');
+
+        $querySelect = "SELECT * FROM tbobraetapamateriales WHERE tbetapaid IN (SELECT tbetapaid FROM tbobraetapa WHERE tbetapaid = '". $idObra ."');";
+        $result = mysqli_query($conn, $querySelect);
+        mysqli_close($conn);
+        $ObraEtapa = [];
+        while ($row = mysqli_fetch_array($result)) {
+            $currentObraEtapa = new ObraEtapaMateriales($row['tbetapamaterialesid'],$row['tbetapaid'], $row['tbetapanombremateriales'], $row['tbetapacantidad'], 
+            $row['tbetapacostoaproximado']);
+            array_push($ObraEtapa, $currentObraEtapa);
+        }
+        return $ObraEtapa;
+    }
 }
 
 

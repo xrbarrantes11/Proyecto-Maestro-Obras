@@ -23,7 +23,7 @@ error_reporting(0);
     <a href="./view/EmpleadoTipoView.php">Gestion de tipo de empleados</a><br>
     <a href="./view/ObrasView.php">Gestion de obras</a><br>
     <a href="./view/ObraEtapaPrincipalView.php">Gestion de etapas de la obra</a><br>
-    <a href="./view/ObraEtapaMaterialesView.php">Gestion de materiales de la etapa</a><br>
+    <a href="./view/ObraMaterialesPrincipalView.php">Gestion de materiales de la etapa</a><br>
     <a href="./view/ObraCatalogoView.php">Gestion de catalogo de obras</a><br>
     <a href="./view/ClienteView.php">Gestion de clientes</a><br>
     <a href="./view/ProveedorView.php">Gestion de proveedores</a><br>

@@ -29,4 +29,8 @@ class ObraEtapaMaterialesBusiness {
     public function getAllObraEtapaMateriales() {
         return $this->ObraEtapaMaterialesData->getAllObraEtapaMateriales();
     }
+
+    public function getAllObraEtapaMateriales2($id) {
+        return $this->ObraEtapaMaterialesData->getAllObraEtapaMateriales2($id);
+    }
 }

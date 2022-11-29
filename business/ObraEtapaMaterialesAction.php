@@ -7,6 +7,7 @@ if (isset($_POST['actualizar'])) {
         isset($_POST['nombreetapa']) && isset($_POST['nombrematerial']) && isset($_POST['cantidadmaterial'])
         && isset($_POST['montoaproximado'])
     ) {
+        $idE = $_POST['idE'];
         $etapaMaterialId = $_POST['etapamaterialid'];
         $nombreEtapaMat =  $_POST['nombreetapa'];
         $nombreMaterial = $_POST['nombrematerial'];
@@ -26,18 +27,18 @@ if (isset($_POST['actualizar'])) {
 
                 $result = $ObraEtapaMaterialesBusiness->updateObraEtapaMateriales($ObraEtapaMat);
                 if ($result == 1) {
-                    header("location: ../view/ObraEtapaMaterialesView.php?success=updated");
+                    header("location: ../view/ObraEtapaMaterialesView.php?id=$idE&success=updated");
                 } else {
-                    header("location: ../view/ObraEtapaMaterialesView.php?error=dbError");
+                    header("location: ../view/ObraEtapaMaterialesView.php?id=$idE&error=dbError");
                 }
             } else {
-                header("location: ../view/ObraEtapaMaterialesView.php?error=stringFormat");
+                header("location: ../view/ObraEtapaMaterialesView.php?id=$idE&error=stringFormat");
             }
         } else {
-            header("location: ../view/ObraEtapaMaterialesView.php?error=emptyField");
+            header("location: ../view/ObraEtapaMaterialesView.php?id=$idE&error=emptyField");
         }
     } else {
-        header("location: ../view/ObraEtapaMaterialesView.php?error=error");
+        header("location: ../view/ObraEtapaMaterialesView.php?id=$idE&error=error");
     }
 } else if (strcmp($_POST['action'], 'delete') == 0) { //delete
     if (isset($_POST['etapamaterialid'])) {
@@ -64,6 +65,8 @@ else if (isset($_POST['crear'])) {
         isset($_POST['nombreetapa']) && isset($_POST['materiales']) && isset($_POST['cantidadmaterial'])
         && isset($_POST['costo'])
     ) {
+
+        $idE = $_POST['idE'];
         $etapaMaterialId = 0;
         $nombreEtapa =  $_POST['nombreetapa'];
         $materiales = $_POST['materiales'];
@@ -82,21 +85,28 @@ else if (isset($_POST['crear'])) {
                 $result = $ObraEtapaMaterialesBusiness->insertObraEtapa($ObraEtapaMaterial);
 
                 if ($result == 1) {
-                    header("location: ../view/ObraEtapaMaterialesView.php?success=inserted");
+                    header("location: ../view/ObraEtapaMaterialesView.php?id=$idE&success=inserted");
                 } else {
-                    header("location: ../view/ObraEtapaMaterialesView.php?error=dbError&var1=$etapaMaterialId&var2=$nombreEtapa&var3=$materiales&var4=$cantidadmaterial");
+                    header("location: ../view/ObraEtapaMaterialesView.php?id=$idE&error=dbError&var1=$etapaMaterialId&var2=$nombreEtapa&var3=$materiales&var4=$cantidadmaterial");
                 }
             } else {
                 //if ((is_numeric($materiales))) {
-                    header("location: ../view/ObraEtapaMaterialesView.php?error=stringFormat&var1=$etapaMaterialId&var2=$nombreEtapa&var3=$materiales&var4=$cantidadmaterial");
+                    header("location: ../view/ObraEtapaMaterialesView.php?id=$idE&error=stringFormat&var1=$etapaMaterialId&var2=$nombreEtapa&var3=$materiales&var4=$cantidadmaterial");
                 //}
             }
         }
         else {
-            header("location: ../view/ObraEtapaMaterialesView.php?error=emptyField&var1=$etapaMaterialId&var2=$nombreEtapa&var3=$materiales&var4=$cantidadmaterial");
+            header("location: ../view/ObraEtapaMaterialesView.php?id=$idE&error=emptyField&var1=$etapaMaterialId&var2=$nombreEtapa&var3=$materiales&var4=$cantidadmaterial");
         }
     } 
     else {
-        header("location: ../view/ObraEtapaMaterialesView.php?error=error&var1=$etapaMaterialId&var2=$nombreEtapa&var3=$materiales&var4=$cantidadmaterial");
+        header("location: ../view/ObraEtapaMaterialesView.php?id=$idE&error=error&var1=$etapaMaterialId&var2=$nombreEtapa&var3=$materiales&var4=$cantidadmaterial");
+    }
+}else if ($_POST['gestion']) {
+
+    if (isset($_POST['tbobraid'])) {
+        $tbObraId = $_POST['tbobraid'];
+
+        header("location: ../view/ObraEtapaMaterialesView.php?id=$tbObraId");
     }
 }

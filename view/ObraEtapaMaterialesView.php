@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <script src="../js/FunctionProyectos.js"></script>
+    <script src="../js/FunctionProyec.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Etapa de materiales</title>
     <script src="https://jsuites.net/v4/jsuites.js"></script>   
@@ -11,6 +11,7 @@
     <?php
     include '../business/ObraEtapaMaterialesBusiness.php';
     include '../business/ObraEtapaBusiness.php';
+    $idObrass = $_GET['id']; 
     //include '../business/EmpleadoTipoBusiness.php';
     ?>
 </head>
@@ -37,8 +38,8 @@
                 $ObraEtapaMaterialesBusiness = new ObraEtapaMaterialesBusiness();
                 //$EmpleadoTipoBusiness = new EmpleadoTipoBusiness();
                 $ObraEtapaBusiness = new ObraEtapaBusiness();
-                $allObrasEtapaMateriales = $ObraEtapaMaterialesBusiness->getAllObraEtapaMateriales();
-                foreach ($allObrasEtapaMateriales as $current) {
+                $allObrasEtapaMateriales = $ObraEtapaMaterialesBusiness->getAllObraEtapaMateriales2($idObrass);
+                foreach ($allObrasEtapaMateriales as $current) {    
 
                     echo '<form method="post" enctype="multipart/form-data" action="../business/ObraEtapaMaterialesAction.php">';
                     echo '<td><input type="hidden" readonly name="etapamaterialid" id="etapamaterialid" value="' . $current->getObraEtapaMaterialesId(). '"/></td>';
@@ -47,7 +48,9 @@
                     echo '<td><input required type="text" data-mask  ="####" name="cantidadmaterial" id="cantidadmaterial" value="' . $current->getEtapaCantidad() . '"/></td>';
                     echo '<td><input required type="text" data-mask  ="₡ #.##0,00" name="montoaproximado" id="montoaproximado" value="₡' . $current->getEtapaCostoAproximado() . '"/></td>';
                     echo '<td><input type="submit" value="Actualizar" name="actualizar" id="actualizar"/></td>';
-                    echo '<td><button onclick="eliminarEtapaMaterial(' . $current->getObraEtapaMaterialesId() . ')">Eliminar</button></td>';
+                    echo '<td><button onclick="eliminarEtapaMaterial(' . $current->getObraEtapaMaterialesId() . ','.$idObrass.')">Eliminar</button></td>';
+                    echo '<td> <input required type="hidden" style="WIDTH: 300px; HEIGHT: 85px" name="idE" id="idE" value="' . $idObrass . '"/></td>';
+                                     
                     echo '</tr>';
                     echo '</form>';
                 }
@@ -58,11 +61,12 @@
                 <tr>
                     <th></th>
                 </tr>
-                <th></th>
+                <th></th>                
                 <th>Nombre etapa</th>
                 <th>Materiales</th>
                 <th>Cantidad Materiales</th>
                 <th>Costo aproximado</th>
+
                 </tr>
 
 
@@ -102,17 +106,20 @@
                                 <option value="">Seleccionar etapa</option>
                                 <?php
                                 $ObraEtapaBusiness = new ObraEtapaBusiness();   
-                                $etapaa = $ObraEtapaBusiness->getAllObraEtapa();
+                                $etapaa = $ObraEtapaBusiness->getAllObraEtapa($idObrass);
                                foreach ($etapaa as $curren) { ?>
                                     <option value="<?php echo $curren->getObraId() ?>"><?php echo $curren->getObraEtapaNombre() ?></option>
                                 <?php } ?>
                             </select>
                         </td>
                         <?php
-                        echo '<td> <input required type="text" style="WIDTH: 300px; HEIGHT: 85px" name="materiales" id="materiales" value="' . $nombreMaterial . '"/></td>';
+                       echo '<td> <input required type="text" style="WIDTH: 300px; HEIGHT: 85px" name="materiales" id="materiales" value="' . $nombreMaterial . '"/></td>';
                         echo '<td><input required type="text" data-mask  ="0000" max="9999" name="cantidadmaterial" id="cantidadmaterial" value="' . $cantidadMaterial . '"/></td>';
                         echo '<td><input required type="text" data-mask  ="₡#.##0,00" name="costo" id="costo" value="₡ '.$costoAproximado.'"/></td>';
-                        ?>
+                        echo '<td> <input required type="hidden" style="WIDTH: 300px; HEIGHT: 85px" name="idE" id="idE" value="' . $idObrass . '"/></td>';
+                       
+                       
+                       ?>
                         <td><input type="submit" value="Insertar" name="crear" id="crear" /></td>
                     </tr>
                 </form>

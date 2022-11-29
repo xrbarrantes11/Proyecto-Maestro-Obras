@@ -30,4 +30,9 @@ class ObraEtapaBusiness {
     public function getAllObraEtapa($idObra) {
         return $this->ObraEtapaData->getAllObraEtapa($idObra);
     }
+
+    public function getAllEtapa() {
+        return $this->ObraEtapaData->getAllEtapa();
+    }
+
 }

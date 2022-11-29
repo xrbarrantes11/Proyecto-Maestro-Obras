@@ -14,7 +14,7 @@
     include '../business/ObraEtapaBusiness.php';
     include '../business/ObraEtapaTipoEmpleadoAsignadoBusiness.php';
     include '../business/ObrasBusiness.php';
-    //hollaa
+    
     ?>
     
 
@@ -67,7 +67,7 @@
                                 <?php
                                 $ObraEtapaBusiness = new ObraEtapaBusiness();
                                 $ObrasBusiness = new ObrasBusiness();
-                                $obraEtapa = $ObraEtapaBusiness->getAllObraEtapa(1);
+                                $obraEtapa = $ObraEtapaBusiness->getAllObraEtapa(); 
                                 foreach ($obraEtapa as $tipo) { ?>
                                     <option value="<?php echo $tipo->getObraId() ?>"><?php echo $ObrasBusiness->getNombreObras($tipo->getObraId()) ?> - <?php echo $tipo->getObraEtapaNombre() ?></option>
                                 <?php } ?>

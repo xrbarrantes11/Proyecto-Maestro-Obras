@@ -16,8 +16,13 @@ function eliminarPagoRangoTipoEmpleado(empleadotipoid) {
 }
 
 
-function eliminarEtapaMaterial(etapamaterialid) {
+
+
+
+function eliminarEtapaMaterial(etapamaterialid,idObra) {
+
     if (confirm("Seguro que desea eliminar esta etapa con sus materiales?")) {
+        var id= idObra;
         const data = new FormData();//crea formulario
         data.append("action", "delete");//le indica la acción del formulario como parametro de nombre action con valor logOut
         data.append("etapamaterialid", etapamaterialid);//indica la variable que quiere enviar al action php
@@ -27,7 +32,7 @@ function eliminarEtapaMaterial(etapamaterialid) {
         http.onreadystatechange = function () {//espera respuesta
             if (http.readyState === 4) {//respuesta correcta
                 alert(http.responseText);
-                document.location = '../view/ObraEtapaMaterialesView.php';
+                document.location = '../view/ObraEtapaMaterialesView.php?id='+id;
             }
         };
     } else { }
