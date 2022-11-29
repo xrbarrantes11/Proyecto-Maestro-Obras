@@ -261,7 +261,7 @@ error_reporting(0);
                 var entrega = new Date($('#tbobrafechaentrega').val());
                 var fin = new Date($('#tbobrafechaestimadofinalizacion').val());
 
-                if (inicio > entrega) {
+                if (inicio < entrega) {//Listo
                     alert("La fecha de inicio no puede ser mayor a la fecha de entrega");
                     event.preventDefault();
                 }else if(inicio > fin){
