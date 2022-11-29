@@ -38,8 +38,10 @@ function eliminarEtapaMaterial(etapamaterialid,idObra) {
     } else { }
 }
 
-function eliminarObraEtapaTipoEmpleadoAsignado(empleadotipoid) {
+function eliminarObraEtapaTipoEmpleadoAsignado(empleadotipoid,idObra) {
+   
     if (confirm("Seguro que desea eliminar el empleado de esta etapa?")) {
+        var id= idObra;
         const data = new FormData();//crea formulario
         data.append("action", "delete");//le indica la acción del formulario como parametro de nombre action con valor logOut
         data.append("tbobraetapaempleadotipoasignadoid", empleadotipoid);//indica la variable que quiere enviar al action php
@@ -49,7 +51,7 @@ function eliminarObraEtapaTipoEmpleadoAsignado(empleadotipoid) {
         http.onreadystatechange = function () {//espera respuesta
             if (http.readyState === 4) {//respuesta correcta
                 alert(http.responseText);
-                document.location = '../view/ObraEtapaEmpleadoAsignadoView.php';
+                document.location = '../view/ObraEtapaEmpleadoAsignadoView.php?id='+id;
             }
         };
     } else { }

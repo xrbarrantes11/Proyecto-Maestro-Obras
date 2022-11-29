@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <script src="../js/FunctionProyectos.js"></script>
+    <script src="../js/FunctionProyec.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Asignar Tipo de Empleado a Obra</title>
     <script src="https://jsuites.net/v4/jsuites.js"></script>
@@ -46,7 +46,7 @@
                     echo '<td><input type="text" readonly name="etapanombreid" id="etapanombreid" value="' . $ObraEtapaBusiness->getNombreEtapa($current->getObraEtapaId()) . '"/></td>';
                     echo '<td><input type="text" readonly name="empleadonombreid" id="empleadonombreid" value="' . $EmpleadoBusiness->getNombreEmpleado($current->getEmpleadoId()) . '"/></td>';
                     echo '<td><input type="text" readonly name="empleadotipoid" id="empleadotipoid" value="' . $EmpleadoTipoBusiness->getEmpleadoTipo($current->getEmpleadoTipoId()) . '"/></td>';
-                    echo '<td><button onclick="eliminarObraEtapaTipoEmpleadoAsignado(' . $current->getObraEtapaTipoEmpleadoId() . ')">Eliminar</button></td>';
+                    echo '<td><button onclick="eliminarObraEtapaTipoEmpleadoAsignado(' .$current->getObraEtapaTipoEmpleadoId() . ','.$idObrass.')">Eliminar</button></td>';
                     echo '<td> <input required type="hidden" style="WIDTH: 300px; HEIGHT: 85px" name="idE" id="idE" value="' . $idObrass . '"/></td>';
                     echo '</tr>';
                     echo '</form>';
