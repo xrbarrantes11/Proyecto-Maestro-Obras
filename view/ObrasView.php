@@ -261,13 +261,35 @@ error_reporting(0);
                 var entrega = new Date($('#tbobrafechaentrega').val());
                 var fin = new Date($('#tbobrafechaestimadofinalizacion').val());
 
-                if (inicio < entrega) {//Listo
+                if (inicio > entrega) {//Listo
                     alert("La fecha de inicio no puede ser mayor a la fecha de entrega");
                     event.preventDefault();
-                }else if(inicio > fin){
+                }if(inicio > fin){
                     alert("La fecha de inicio no puede ser mayor a la fecha estimada de finalización");
                     event.preventDefault();
-                }else if(entrega > fin){
+                }if(entrega > fin){
+                    alert("La fecha de entrega no puede ser mayor a la fecha estimada de finalización");
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#actualizar").on("click", function() {
+                var inicio = new Date($('#tbobrafechainicio').val());
+                var entrega = new Date($('#tbobrafechaentrega').val());
+                var fin = new Date($('#tbobrafechaestimadofinalizacion').val());
+
+                if (inicio > entrega) {//Listo
+                    alert("La fecha de inicio no puede ser mayor a la fecha de entrega");
+                    event.preventDefault();
+                }if(inicio > fin){
+                    alert("La fecha de inicio no puede ser mayor a la fecha estimada de finalización");
+                    event.preventDefault();
+                }if(entrega > fin){
                     alert("La fecha de entrega no puede ser mayor a la fecha estimada de finalización");
                     event.preventDefault();
                 }
