@@ -30,4 +30,8 @@ class ObraEtapaTipoEmpleadoAsignadoBusiness {
         return $this->ObraEtapaTipoEmpleadoAsignadoData->buscarEmpleadoTipoEmpleadoObraRepetido($empleadoNombreId, $empleadoTipoId);
     }
 
+    public function getAllObraTipoEmpleadoAsignado2($idObra) {
+        return $this->ObraEtapaTipoEmpleadoAsignadoData->getAllObraTipoEmpleadoAsignado2($idObra);
+    }
+
 }

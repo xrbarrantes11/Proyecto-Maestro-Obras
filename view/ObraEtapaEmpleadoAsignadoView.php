@@ -14,9 +14,9 @@
     include '../business/ObraEtapaBusiness.php';
     include '../business/ObraEtapaTipoEmpleadoAsignadoBusiness.php';
     include '../business/ObrasBusiness.php';
-    
+    $idObrass = $_GET['id'];
     ?>
-    
+
 
 </head>
 
@@ -39,7 +39,7 @@
                 $EmpleadoTipoBusiness = new EmpleadoTipoBusiness();
                 $EmpleadoBusiness = new EmpleadoBusiness();
                 $ObraTipoEmpleadoAsignado = new ObraEtapaTipoEmpleadoAsignadoBusiness();
-                $AllObraTipoEmpleadoAsignado = $ObraTipoEmpleadoAsignado->getAllObraTipoEmpleadoAsignado();
+                $AllObraTipoEmpleadoAsignado = $ObraTipoEmpleadoAsignado->getAllObraTipoEmpleadoAsignado2($idObrass);
                 foreach ($AllObraTipoEmpleadoAsignado as $current) {
                     echo '<form method="post" enctype="multipart/form-data" action="../business/ObraEtapaTipoEmpleadoAsignadoAction.php">';
                     echo '<td><input type="hidden" name="tbobraetapaempleadotipoasignadoid" value="' . $current->getObraEtapaTipoEmpleadoId() . '"/></td>';
@@ -47,6 +47,7 @@
                     echo '<td><input type="text" readonly name="empleadonombreid" id="empleadonombreid" value="' . $EmpleadoBusiness->getNombreEmpleado($current->getEmpleadoId()) . '"/></td>';
                     echo '<td><input type="text" readonly name="empleadotipoid" id="empleadotipoid" value="' . $EmpleadoTipoBusiness->getEmpleadoTipo($current->getEmpleadoTipoId()) . '"/></td>';
                     echo '<td><button onclick="eliminarObraEtapaTipoEmpleadoAsignado(' . $current->getObraEtapaTipoEmpleadoId() . ')">Eliminar</button></td>';
+                    echo '<td> <input required type="hidden" style="WIDTH: 300px; HEIGHT: 85px" name="idE" id="idE" value="' . $idObrass . '"/></td>';
                     echo '</tr>';
                     echo '</form>';
                 }
@@ -58,6 +59,7 @@
                     <th>Etapa</th>
                     <th>Nombre de Empleado</th>
                     <th>Tipo de Empleado</th>
+                    <th></th>
                 </tr>
 
                 <form method="post" enctype="multipart/form-data" action="../business/ObraEtapaTipoEmpleadoAsignadoAction.php">
@@ -67,7 +69,7 @@
                                 <?php
                                 $ObraEtapaBusiness = new ObraEtapaBusiness();
                                 $ObrasBusiness = new ObrasBusiness();
-                                $obraEtapa = $ObraEtapaBusiness->getAllObraEtapa(); 
+                                $obraEtapa = $ObraEtapaBusiness->getAllObraEtapa($idObrass);
                                 foreach ($obraEtapa as $tipo) { ?>
                                     <option value="<?php echo $tipo->getObraId() ?>"><?php echo $ObrasBusiness->getNombreObras($tipo->getObraId()) ?> - <?php echo $tipo->getObraEtapaNombre() ?></option>
                                 <?php } ?>
@@ -90,6 +92,9 @@
                                     <option value="<?php echo $tipo->getEmpleadoTipoId() ?>"><?php echo $tipo->getEmpleadoTipoNombre() ?></option>
                                 <?php } ?>
                             </select></td>
+                            <?php
+                            echo'<td> <input required type="hidden" style="WIDTH: 300px; HEIGHT: 85px" name="idE" id="idE" value="' . $idObrass . '"/></td>';
+                            ?>
                         <td><input type="submit" value="Ingresar" name="crear" id="crear" /></td>
                     </tr>
                 </form>
@@ -111,7 +116,7 @@
                             echo '<p style="color: red">Ya existe un registro con los datos ingresados!</p></center>';
                         } else if ($_GET['error'] == "empty") {
                             echo '<p style="color: red">El empleado seleccionado no se encuentra registrado con el tipo seleccionado!</p></center>';
-                        }else if ($_GET['error'] == "repite") {
+                        } else if ($_GET['error'] == "repite") {
                             echo '<p style="color: red">Ya existe un registro con los datos ingresados!</p></center>';
                         }
                     } else if (isset($_GET['success'])) {
@@ -126,7 +131,7 @@
     <footer>
     </footer>
 
-    <form action="../business/HomeAction.php" method="POST">
+    <form action="../view/ObraEmpleadoAsignadoPrincipalView.php" method="POST">
         <button type="submit" name="regresar"> Regresar</button>
     </form>
 

@@ -85,4 +85,20 @@ class ObraEtapaTipoEmpleadoAsignadoData extends Data {
         return $busqueda;
     }
 
+    public function getAllObraTipoEmpleadoAsignado2($idObra) {
+        $conn = mysqli_connect($this->server, $this->user, $this->password, $this->db);
+        $conn->set_charset('utf8');
+
+        $querySelect = "SELECT * FROM tbobraetapaempleadotipoasignado WHERE tbobraetapaid IN (SELECT tbobraetapaid FROM tbobraetapa WHERE tbobraetapaid ='". $idObra ."');";
+        $result = mysqli_query($conn, $querySelect);
+        mysqli_close($conn);
+        $ObraEtapa = [];
+        while ($row = mysqli_fetch_array($result)) {
+            $currentObraEtapa = new ObraEtapaTipoEmpleadoAsignado($row['tbobraetapaempleadotipoasignadoid'], $row['tbobraetapaid'], $row['tbempleadoid'], 
+            $row['tbempleadotipoid']);
+            array_push($ObraEtapa, $currentObraEtapa);
+        }
+        return $ObraEtapa;
+    }
+
 }

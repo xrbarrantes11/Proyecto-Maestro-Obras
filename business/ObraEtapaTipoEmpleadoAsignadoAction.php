@@ -13,6 +13,7 @@ if (isset($_POST['crear'])) {
         $EmpleadoTipoEmpleadoPagoBusiness = new EmpleadoTipoEmpleadoPagoBusiness();
         $ObraEtapaTipoEmpleadoAsignadoBusiness = new ObraEtapaTipoEmpleadoAsignadoBusiness();
         $EmpleadoTipoAsignadoBusiness = new EmpleadoTipoAsignadoBusiness();
+        $idE = $_POST['idE'];
         $etapaNombre = $_POST['etapanombreid'];
         $empleadoNombreId = $_POST['empleadonombreid'];
         $empleadoTipo = $_POST['empleadotipoid'];
@@ -27,22 +28,22 @@ if (isset($_POST['crear'])) {
                     }
                 }
                 if ($result == 1) {
-                    header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?success=inserted");
+                    header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?id=$idE&success=inserted");
                 } else if ($ObraEtapaTipoEmpleadoAsignadoBusiness->buscarEmpleadoTipoEmpleadoObraRepetido($empleadoNombreId, $empleadoTipoId) == true) {
-                    header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?error=repite");
+                    header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?id=$idE&error=repite");
                 } else if($EmpleadoTipoAsignadoBusiness->buscarTipoAsignado($empleadoNombreId, $empleadoTipoId) == false){
-                    header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?error=empty");
+                    header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?id=$idE&error=empty");
                 } else {
-                    header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?error=dbError");
+                    header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?id=$idE&error=dbError");
                 }
             } else {
-                header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?error=repite");
+                header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?id=$idE&error=repite");
             }
         } else {
-            header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?error=emptyField");
+            header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?id=$idE&error=emptyField");
         }
     } else {
-        header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?error=stringFormat");
+        header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?id=$idE&error=stringFormat");
     }
 } else if (strcmp($_POST['action'], 'delete') == 0) { //delete
     if (isset($_POST['tbobraetapaempleadotipoasignadoid'])) {
@@ -60,5 +61,12 @@ if (isset($_POST['crear'])) {
         }
     } else {
         echo "Error de informacion";
+    }
+}else if ($_POST['gestion']) {
+
+    if (isset($_POST['tbobraid'])) {
+        $tbObraId = $_POST['tbobraid'];
+
+        header("location: ../view/ObraEtapaEmpleadoAsignadoView.php?id=$tbObraId");
     }
 }
